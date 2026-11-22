@@ -79,11 +79,13 @@ export const SEO_CONFIG = {
  * Prefers NEXT_PUBLIC_SITE_URL or NEXT_PUBLIC_APP_URL, falling back to the current production deployment.
  */
 export function getBaseSiteUrl(): string {
-  const url =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    process.env.NEXT_PUBLIC_APP_URL ||
-    "https://www.suhailahmedonlinequranacademy.com";
-  return url.replace(/\/+$/, "");
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/+$/, "");
+  }
+  if (process.env.NEXT_PUBLIC_APP_URL && !process.env.NEXT_PUBLIC_APP_URL.includes("vercel.app")) {
+    return process.env.NEXT_PUBLIC_APP_URL.replace(/\/+$/, "");
+  }
+  return "https://www.suhailahmedonlinequranacademy.com";
 }
 
 /**
