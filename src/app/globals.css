@@ -55,3 +55,62 @@ html {
   background-color: #064E3B;
   color: #D4AF37;
 }
+
+/* Right-to-Left Marquee Animations */
+@keyframes marqueeRTL {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-rtl {
+  display: flex;
+  width: max-content;
+  animation: marqueeRTL 38s linear infinite;
+}
+
+.animate-marquee-rtl:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-rtl-fast {
+  display: flex;
+  width: max-content;
+  animation: marqueeRTL 28s linear infinite;
+}
+
+.animate-marquee-rtl-fast:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-rtl-slow {
+  display: flex;
+  width: max-content;
+  animation: marqueeRTL 48s linear infinite;
+}
+
+.animate-marquee-rtl-slow:hover {
+  animation-play-state: paused;
+}
+
+/* Glassic Look & Island Navbar Utility */
+.glass-island {
+  background: rgba(3, 40, 30, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.38);
+}
+
+/* Hide scrollbar for clean carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

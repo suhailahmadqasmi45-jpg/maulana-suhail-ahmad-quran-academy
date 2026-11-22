@@ -19,7 +19,7 @@ export function PageHeader({
   breadcrumbs = [],
 }: PageHeaderProps) {
   return (
-    <div className="relative bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950 text-ivory-50 pt-16 pb-20 px-4 sm:px-6 lg:px-8 border-b border-gold-500/20 overflow-hidden">
+    <div className="relative bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950 text-ivory-50 pt-28 sm:pt-36 pb-20 px-4 sm:px-6 lg:px-8 border-b border-gold-500/20 overflow-hidden">
       <SubtleGeometricPattern />
 
       {/* Decorative top soft glow */}

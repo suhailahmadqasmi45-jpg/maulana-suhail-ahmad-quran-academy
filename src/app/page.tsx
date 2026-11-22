@@ -37,7 +37,7 @@ export default function HomePage() {
       {/* ========================================================
           1. HERO SECTION (Desktop 2-Column, Mobile Vertical)
       ======================================================== */}
-      <section className="relative min-h-[90vh] flex items-center bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950 text-ivory-50 pt-12 pb-20 px-4 sm:px-6 lg:px-8 border-b border-gold-500/20">
+      <section className="relative min-h-[90vh] flex items-center bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950 text-ivory-50 pt-28 sm:pt-36 lg:pt-40 pb-20 px-4 sm:px-6 lg:px-8 border-b border-gold-500/20">
         <SubtleGeometricPattern />
 
         {/* Ambient atmospheric lighting */}
@@ -305,50 +305,93 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              icon: Users,
-              title: "1-on-1 Focused Attention",
-              desc: "Every single class is private and dedicated to one student only, guaranteeing that the tutor identifies and corrects every subtle pronunciation nuance immediately.",
-            },
-            {
-              icon: Award,
-              title: "Certified Qaris & Huffaz",
-              desc: "All male and female instructors possess formal Ijazah / Sanad in Tajweed and extensive teaching experience with young children and adults.",
-            },
-            {
-              icon: Clock,
-              title: "Flexible Scheduling (24/7)",
-              desc: "Coordinate your classes to match your family's timezone, school timings, or working shifts across India, GCC, UK, USA, and beyond.",
-            },
-            {
-              icon: HeartHandshake,
-              title: "Female Teachers Available",
-              desc: "Dedicated, certified female Quran teachers are available for sisters and young daughters in an atmosphere of complete comfort and respect.",
-            },
-            {
-              icon: Laptop,
-              title: "Interactive Digital Tools",
-              desc: "Engaging digital Noorani Qaida, color-coded Tajweed Mushaf, and whiteboard explanations make learning vibrant and memorable.",
-            },
-            {
-              icon: ShieldCheck,
-              title: "Regular Progress Monitoring",
-              desc: "Parents receive regular oral test evaluations, monthly attendance logs, and Tajweed benchmark reports tracking real progress.",
-            },
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="p-8 rounded-3xl bg-ivory-50 border border-emerald-950/10 hover:border-gold-500/40 shadow-sm hover:shadow-xl transition-all duration-300 group"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-emerald-900/10 text-emerald-900 group-hover:bg-emerald-900 group-hover:text-gold-400 flex items-center justify-center mb-5 transition-colors">
-                <item.icon className="w-6 h-6" />
+        {/* Right-to-Left Auto-Scrolling Carousel */}
+        <div className="relative w-full overflow-hidden py-4">
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-24 bg-gradient-to-r from-ivory-50 to-transparent z-10" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-24 bg-gradient-to-l from-ivory-50 to-transparent z-10" />
+
+          <div className="flex gap-6 animate-marquee-rtl hover:[animation-play-state:paused] active:[animation-play-state:paused] w-max select-none py-2">
+            {[
+              {
+                icon: Users,
+                title: "1-on-1 Focused Attention",
+                desc: "Every single class is private and dedicated to one student only, guaranteeing that the tutor identifies and corrects every subtle pronunciation nuance immediately.",
+              },
+              {
+                icon: Award,
+                title: "Certified Qaris & Huffaz",
+                desc: "All male and female instructors possess formal Ijazah / Sanad in Tajweed and extensive teaching experience with young children and adults.",
+              },
+              {
+                icon: Clock,
+                title: "Flexible Scheduling (24/7)",
+                desc: "Coordinate your classes to match your family's timezone, school timings, or working shifts across India, GCC, UK, USA, and beyond.",
+              },
+              {
+                icon: HeartHandshake,
+                title: "Female Teachers Available",
+                desc: "Dedicated, certified female Quran teachers are available for sisters and young daughters in an atmosphere of complete comfort and respect.",
+              },
+              {
+                icon: Laptop,
+                title: "Interactive Digital Tools",
+                desc: "Engaging digital Noorani Qaida, color-coded Tajweed Mushaf, and whiteboard explanations make learning vibrant and memorable.",
+              },
+              {
+                icon: ShieldCheck,
+                title: "Regular Progress Monitoring",
+                desc: "Parents receive regular oral test evaluations, monthly attendance logs, and Tajweed benchmark reports tracking real progress.",
+              },
+              // Duplicated for seamless continuous right-to-left loop
+              {
+                icon: Users,
+                title: "1-on-1 Focused Attention",
+                desc: "Every single class is private and dedicated to one student only, guaranteeing that the tutor identifies and corrects every subtle pronunciation nuance immediately.",
+              },
+              {
+                icon: Award,
+                title: "Certified Qaris & Huffaz",
+                desc: "All male and female instructors possess formal Ijazah / Sanad in Tajweed and extensive teaching experience with young children and adults.",
+              },
+              {
+                icon: Clock,
+                title: "Flexible Scheduling (24/7)",
+                desc: "Coordinate your classes to match your family's timezone, school timings, or working shifts across India, GCC, UK, USA, and beyond.",
+              },
+              {
+                icon: HeartHandshake,
+                title: "Female Teachers Available",
+                desc: "Dedicated, certified female Quran teachers are available for sisters and young daughters in an atmosphere of complete comfort and respect.",
+              },
+              {
+                icon: Laptop,
+                title: "Interactive Digital Tools",
+                desc: "Engaging digital Noorani Qaida, color-coded Tajweed Mushaf, and whiteboard explanations make learning vibrant and memorable.",
+              },
+              {
+                icon: ShieldCheck,
+                title: "Regular Progress Monitoring",
+                desc: "Parents receive regular oral test evaluations, monthly attendance logs, and Tajweed benchmark reports tracking real progress.",
+              },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="w-[300px] sm:w-[360px] shrink-0 p-8 rounded-3xl bg-ivory-50 border border-emerald-950/10 hover:border-gold-500/40 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-900/10 text-emerald-900 group-hover:bg-emerald-900 group-hover:text-gold-400 flex items-center justify-center mb-5 transition-colors">
+                    <item.icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-emerald-950 mb-2">{item.title}</h3>
+                  <p className="text-sm text-dark-800/75 leading-relaxed">{item.desc}</p>
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-emerald-950 mb-2">{item.title}</h3>
-              <p className="text-sm text-dark-800/75 leading-relaxed">{item.desc}</p>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        <div className="flex items-center justify-center gap-2 text-xs text-emerald-800/70 mt-3 font-medium">
+          <span>⇄ Auto-scrolling right to left • Hover or touch to pause</span>
         </div>
       </section>
 
@@ -433,56 +476,68 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {courses.map((course) => (
-            <div
-              key={course.slug}
-              className="flex flex-col p-6 rounded-3xl bg-ivory-50 border border-emerald-950/10 hover:border-gold-500/50 shadow-md hover:shadow-xl transition-all"
-            >
-              <h3 className="text-lg font-bold text-emerald-950 mb-1">{course.title}</h3>
-              <p className="text-xs text-dark-800/70 mb-4">{course.level}</p>
+        {/* Right-to-Left Auto-Scrolling Carousel */}
+        <div className="relative w-full overflow-hidden py-4">
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-24 bg-gradient-to-r from-ivory-50 to-transparent z-10" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-24 bg-gradient-to-l from-ivory-50 to-transparent z-10" />
 
-              <div className="py-4 border-y border-emerald-950/10 mb-6">
-                <div className="flex items-baseline gap-1">
-                  <span className="text-3xl font-serif font-bold text-emerald-900">
-                    {formatCurrency(course.monthlyFee)}
-                  </span>
-                  <span className="text-xs text-dark-800/70">/ month</span>
-                </div>
-                {course.originalFee && (
-                  <p className="text-xs text-dark-800/60 mt-1">
-                    Regular: <span className="line-through">{formatCurrency(course.originalFee)}</span> (You save ₹100/mo)
-                  </p>
-                )}
-              </div>
-
-              <ul className="space-y-2.5 text-xs text-dark-800/85 mb-8 flex-1">
-                <li className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-emerald-700" />
-                  <span>1-on-1 Live Class Session</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-emerald-700" />
-                  <span>{course.duration}</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-emerald-700" />
-                  <span>Certified Islamic Tutor</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-emerald-700" />
-                  <span>Free Trial Class Eligible</span>
-                </li>
-              </ul>
-
-              <Link
-                href={`/admission?course=${course.slug}`}
-                className="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center bg-emerald-900 hover:bg-emerald-800 text-ivory-50 transition-colors shadow-sm"
+          <div className="flex gap-6 animate-marquee-rtl hover:[animation-play-state:paused] active:[animation-play-state:paused] w-max select-none py-2">
+            {[...courses, ...courses, ...courses].map((course, idx) => (
+              <div
+                key={`${course.slug}-${idx}`}
+                className="w-[280px] sm:w-[320px] shrink-0 flex flex-col p-6 rounded-3xl bg-ivory-50 border border-emerald-950/10 hover:border-gold-500/50 shadow-md hover:shadow-xl transition-all justify-between"
               >
-                Enroll in {course.title}
-              </Link>
-            </div>
-          ))}
+                <div>
+                  <h3 className="text-lg font-bold text-emerald-950 mb-1">{course.title}</h3>
+                  <p className="text-xs text-dark-800/70 mb-4">{course.level}</p>
+
+                  <div className="py-4 border-y border-emerald-950/10 mb-6">
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-3xl font-serif font-bold text-emerald-900">
+                        {formatCurrency(course.monthlyFee)}
+                      </span>
+                      <span className="text-xs text-dark-800/70">/ month</span>
+                    </div>
+                    {course.originalFee && (
+                      <p className="text-xs text-dark-800/60 mt-1">
+                        Regular: <span className="line-through">{formatCurrency(course.originalFee)}</span> (You save ₹100/mo)
+                      </p>
+                    )}
+                  </div>
+
+                  <ul className="space-y-2.5 text-xs text-dark-800/85 mb-8">
+                    <li className="flex items-center gap-2">
+                      <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                      <span>1-on-1 Live Class Session</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                      <span>{course.duration}</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                      <span>Certified Islamic Tutor</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                      <span>Free Trial Class Eligible</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <Link
+                  href={`/admission?course=${course.slug}`}
+                  className="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center bg-emerald-900 hover:bg-emerald-800 text-ivory-50 transition-colors shadow-sm mt-2"
+                >
+                  Enroll in {course.title}
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex items-center justify-center gap-2 text-xs text-emerald-800/70 mt-3 font-medium">
+          <span>⇄ Auto-scrolling right to left • Hover or touch to pause</span>
         </div>
       </section>
 
@@ -708,7 +763,12 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Right-to-Left Auto-Scrolling Carousel */}
+        <div className="relative w-full overflow-hidden py-4">
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-24 bg-gradient-to-r from-ivory-100 to-transparent z-10" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-24 bg-gradient-to-l from-ivory-100 to-transparent z-10" />
+
+          <div className="flex gap-6 animate-marquee-rtl-slow hover:[animation-play-state:paused] active:[animation-play-state:paused] w-max select-none py-2">
             {[
               {
                 name: "Dr. Tariq Mahmood",
@@ -734,10 +794,83 @@ export default function HomePage() {
                 quote:
                   "The Hifz program’s revision system (Sabaq, Sabqi, Manzil) is rigorous and results-driven. My son has already completed 10 Juz with impeccable retention and confidence. The monthly progress reports keep us fully informed.",
               },
+              {
+                name: "Sister Ayesha Siddiqui",
+                role: "Mother of 9-year-old Daughter",
+                country: "United Arab Emirates",
+                course: "Noorani Qaida",
+                quote:
+                  "Finding a dedicated female teacher who understands child psychology was a blessing. In just 4 months, my daughter graduated from alphabet recognition to fluent Quran reading with proper Tajweed rules.",
+              },
+              {
+                name: "Dr. Bilal Siddique",
+                role: "Parent of 3 Children",
+                country: "United States (Texas)",
+                course: "Quran Kareem Nazra",
+                quote:
+                  "The 1-on-1 private class model makes a massive difference. The teacher gives undivided attention and fixes subtle articulation errors immediately. Very professional and dependable academy.",
+              },
+              {
+                name: "Brother Imran Qureshi",
+                role: "Aalim Course Student",
+                country: "Australia",
+                course: "Aalim Course",
+                quote:
+                  "The depth of knowledge and classical Arabic grammar explanation provided by the scholars is exemplary. It is rare to find such high-level Islamic scholarship in an accessible online format.",
+              },
+              // Duplicated for seamless continuous right-to-left loop
+              {
+                name: "Dr. Tariq Mahmood",
+                role: "Parent of 2 Students (Aged 8 and 11)",
+                country: "United Kingdom",
+                course: "Noorani Qaida & Nazra",
+                quote:
+                  "Suhail Online Quran Academy has transformed my children’s connection with the Quran. The teachers are exceptionally patient, punctual, and follow a structured methodology. Seeing my 8-year-old recite with accurate Makharij brings tears of gratitude.",
+              },
+              {
+                name: "Sister Fatima Al-Zahra",
+                role: "Adult Learner",
+                country: "Canada",
+                course: "Quran Kareem Nazra",
+                quote:
+                  "As a working professional, I struggled for years to find a schedule that worked for me. The flexible timing and dedicated female instructors here allowed me to complete the Nazra course with authentic Tajweed. Highly recommended for adults!",
+              },
+              {
+                name: "Brother Zafar Iqbal",
+                role: "Parent of Hifz Student",
+                country: "India",
+                course: "Hifz-e-Quran",
+                quote:
+                  "The Hifz program’s revision system (Sabaq, Sabqi, Manzil) is rigorous and results-driven. My son has already completed 10 Juz with impeccable retention and confidence. The monthly progress reports keep us fully informed.",
+              },
+              {
+                name: "Sister Ayesha Siddiqui",
+                role: "Mother of 9-year-old Daughter",
+                country: "United Arab Emirates",
+                course: "Noorani Qaida",
+                quote:
+                  "Finding a dedicated female teacher who understands child psychology was a blessing. In just 4 months, my daughter graduated from alphabet recognition to fluent Quran reading with proper Tajweed rules.",
+              },
+              {
+                name: "Dr. Bilal Siddique",
+                role: "Parent of 3 Children",
+                country: "United States (Texas)",
+                course: "Quran Kareem Nazra",
+                quote:
+                  "The 1-on-1 private class model makes a massive difference. The teacher gives undivided attention and fixes subtle articulation errors immediately. Very professional and dependable academy.",
+              },
+              {
+                name: "Brother Imran Qureshi",
+                role: "Aalim Course Student",
+                country: "Australia",
+                course: "Aalim Course",
+                quote:
+                  "The depth of knowledge and classical Arabic grammar explanation provided by the scholars is exemplary. It is rare to find such high-level Islamic scholarship in an accessible online format.",
+              },
             ].map((r, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-3xl bg-ivory-50 border border-emerald-950/10 shadow-sm flex flex-col justify-between"
+                className="w-[320px] sm:w-[380px] shrink-0 p-8 rounded-3xl bg-ivory-50 border border-emerald-950/10 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
               >
                 <div className="space-y-4">
                   <div className="flex items-center gap-1 text-gold-500">
@@ -760,6 +893,11 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="flex items-center justify-center gap-2 text-xs text-emerald-800/70 mt-3 font-medium">
+          <span>⇄ Auto-scrolling right to left • Hover or touch to pause</span>
+        </div>
 
           <div className="mt-12 text-center">
             <Link
@@ -862,7 +1000,12 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Right-to-Left Auto-Scrolling Carousel */}
+        <div className="relative w-full overflow-hidden py-4">
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-24 bg-gradient-to-r from-ivory-100 to-transparent z-10" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-24 bg-gradient-to-l from-ivory-100 to-transparent z-10" />
+
+          <div className="flex gap-6 animate-marquee-rtl hover:[animation-play-state:paused] active:[animation-play-state:paused] w-max select-none py-2">
             {[
               {
                 slug: "how-to-learn-quran-online-beginners-guide",
@@ -888,34 +1031,80 @@ export default function HomePage() {
                 image: "https://images.unsplash.com/photo-1542816417-0983c9c9ad53?auto=format&fit=crop&q=80&w=800",
                 desc: "Explore the traditional tri-fold Hifz system (Sabaq, Sabqi, and Manzil) and discover psychological techniques to maintain rock-solid retention.",
               },
-            ].map((post) => (
+              {
+                slug: "importance-of-tajweed-in-quran-recitation",
+                title: "The Essential Role of Tajweed in Quranic Recitation: Rules & Mastery",
+                category: "Tajweed Rules",
+                readTime: "8 min read",
+                image: "https://images.unsplash.com/photo-1584286595398-a59f21d313f5?auto=format&fit=crop&q=80&w=800",
+                desc: "Learn why precise articulation points (Makharij) and phonological characteristics preserve the sacred meaning of the Divine Revelation.",
+              },
+              // Duplicated for seamless continuous right-to-left loop
+              {
+                slug: "how-to-learn-quran-online-beginners-guide",
+                title: "How to Learn Quran Online: A Comprehensive Guide for Beginners & Families",
+                category: "Quran Learning",
+                readTime: "6 min read",
+                image: "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&q=80&w=800",
+                desc: "Discover practical methods, technical setups, and spiritual habits to maximize your Quranic education from the comfort of your home.",
+              },
+              {
+                slug: "what-is-noorani-qaida-foundation-of-quran-reading",
+                title: "What Is Noorani Qaida? The Essential Foundation of Quranic Recitation",
+                category: "Tajweed & Qaida",
+                readTime: "5 min read",
+                image: "https://images.unsplash.com/photo-1587617425953-9075d28b8c46?auto=format&fit=crop&q=80&w=800",
+                desc: "Understand why the classical Noorani Qaida remains the most trusted phonetic method for children and non-Arabic speaking adults worldwide.",
+              },
+              {
+                slug: "effective-quran-memorization-hifz-tips",
+                title: "Proven Quran Memorization (Hifz) Strategies: Tips from Experienced Huffaz",
+                category: "Hifz Tips",
+                readTime: "7 min read",
+                image: "https://images.unsplash.com/photo-1542816417-0983c9c9ad53?auto=format&fit=crop&q=80&w=800",
+                desc: "Explore the traditional tri-fold Hifz system (Sabaq, Sabqi, and Manzil) and discover psychological techniques to maintain rock-solid retention.",
+              },
+              {
+                slug: "importance-of-tajweed-in-quran-recitation",
+                title: "The Essential Role of Tajweed in Quranic Recitation: Rules & Mastery",
+                category: "Tajweed Rules",
+                readTime: "8 min read",
+                image: "https://images.unsplash.com/photo-1584286595398-a59f21d313f5?auto=format&fit=crop&q=80&w=800",
+                desc: "Learn why precise articulation points (Makharij) and phonological characteristics preserve the sacred meaning of the Divine Revelation.",
+              },
+            ].map((post, idx) => (
               <article
-                key={post.slug}
-                className="group flex flex-col rounded-3xl bg-ivory-50 border border-emerald-950/10 overflow-hidden shadow-sm hover:shadow-xl transition-all"
+                key={`${post.slug}-${idx}`}
+                className="w-[310px] sm:w-[360px] shrink-0 group flex flex-col rounded-3xl bg-ivory-50 border border-emerald-950/10 overflow-hidden shadow-sm hover:shadow-xl transition-all justify-between"
               >
-                <div className="relative h-48 w-full overflow-hidden bg-emerald-950">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full bg-emerald-900/90 text-ivory-50 text-[11px] font-semibold border border-gold-500/30">
-                      {post.category}
-                    </span>
+                <div>
+                  <div className="relative h-48 w-full overflow-hidden bg-emerald-950">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 rounded-full bg-emerald-900/90 text-ivory-50 text-[11px] font-semibold border border-gold-500/30">
+                        {post.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-6 flex flex-col flex-1">
+                    <span className="text-[11px] text-dark-800/60 block mb-2">{post.readTime}</span>
+                    <h3 className="font-bold text-emerald-950 text-base group-hover:text-emerald-800 leading-snug line-clamp-2 mb-2">
+                      <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                    </h3>
+                    <p className="text-xs text-dark-800/75 line-clamp-2 leading-relaxed mb-6">
+                      {post.desc}
+                    </p>
                   </div>
                 </div>
 
-                <div className="p-6 flex flex-col flex-1">
-                  <span className="text-[11px] text-dark-800/60 block mb-2">{post.readTime}</span>
-                  <h3 className="font-bold text-emerald-950 text-base group-hover:text-emerald-800 leading-snug line-clamp-2 mb-2">
-                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                  </h3>
-                  <p className="text-xs text-dark-800/75 line-clamp-2 leading-relaxed mb-6 flex-1">
-                    {post.desc}
-                  </p>
+                <div className="px-6 pb-6">
                   <Link
                     href={`/blog/${post.slug}`}
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-900 hover:text-emerald-700 underline"
@@ -927,6 +1116,11 @@ export default function HomePage() {
               </article>
             ))}
           </div>
+        </div>
+
+        <div className="flex items-center justify-center gap-2 text-xs text-emerald-800/70 mt-3 font-medium">
+          <span>⇄ Auto-scrolling right to left • Hover or touch to pause</span>
+        </div>
         </div>
       </section>
 
