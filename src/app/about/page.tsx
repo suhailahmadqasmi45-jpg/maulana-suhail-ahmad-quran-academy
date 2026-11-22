@@ -251,6 +251,49 @@ export default function AboutPage() {
         </div>
 
         {/* ========================================================
+            OFFICIAL ACADEMY POSTERS & PROSPECTUS
+        ======================================================== */}
+        <div className="space-y-8">
+          <div className="text-center max-w-3xl mx-auto space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-emerald-800">
+              Official Prospectus
+            </span>
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-emerald-950">
+              Our Comprehensive Quran Curriculum
+            </h3>
+            <p className="text-xs sm:text-sm text-dark-800/80">
+              Structured courses for kids, sisters, and adults with one-to-one classes, certified male and female instructors, and free trial demo sessions.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="rounded-3xl overflow-hidden bg-emerald-950 border-2 border-gold-500/40 shadow-xl">
+              <div className="relative h-[480px] sm:h-[540px] w-full">
+                <Image
+                  src="/images/posters/learn-quran-online-dome.jpg"
+                  alt="Maulana Suhail Ahmad - Learn Quran Online Official Poster"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-contain sm:object-cover"
+                />
+              </div>
+            </div>
+
+            <div className="rounded-3xl overflow-hidden bg-emerald-950 border-2 border-gold-500/40 shadow-xl">
+              <div className="relative h-[480px] sm:h-[540px] w-full">
+                <Image
+                  src="/images/posters/learn-quran-online-kids.jpg"
+                  alt="Suhail Online Quran Academy - Kids & Adults Quran Classes Poster"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-contain sm:object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ========================================================
             OFFICIAL ACADEMY REGISTERED ADDRESS & OFFICE CARD
         ======================================================== */}
         <div className="p-8 sm:p-10 rounded-3xl bg-ivory-50 border-2 border-emerald-900/20 shadow-xl space-y-6">

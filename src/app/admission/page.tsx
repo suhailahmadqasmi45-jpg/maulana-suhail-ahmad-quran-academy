@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, Suspense } from "react";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { APPROVED_COURSES } from "@/lib/courses";
@@ -126,11 +127,32 @@ function AdmissionFormInner() {
   }
 
   return (
-    <div className="max-w-xl mx-auto px-1 sm:px-0">
-      <form
-        onSubmit={handleSubmit}
-        className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-ivory-50 border border-emerald-950/15 shadow-xl space-y-4"
-      >
+    <div className="max-w-5xl mx-auto px-1 sm:px-0">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Official Academy Poster */}
+        <div className="hidden lg:block lg:col-span-5 rounded-3xl overflow-hidden bg-emerald-950 border-2 border-gold-500/40 shadow-2xl">
+          <div className="relative h-[560px] w-full bg-emerald-950">
+            <Image
+              src="/images/posters/learn-quran-online-dome.jpg"
+              alt="Official Admission Prospectus - Suhail Online Quran Academy"
+              fill
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              className="object-cover"
+              priority
+            />
+          </div>
+          <div className="p-4 bg-emerald-950 text-ivory-50 text-center border-t border-gold-500/30">
+            <p className="text-xs font-bold text-gold-300">Maulana Suhail Ahmad</p>
+            <p className="text-[11px] text-ivory-200/80">Suhail Online Quran Academy • 1-on-1 Classes</p>
+          </div>
+        </div>
+
+        {/* Form Container */}
+        <div className="lg:col-span-7">
+          <form
+            onSubmit={handleSubmit}
+            className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-ivory-50 border border-emerald-950/15 shadow-xl space-y-4"
+          >
         {/* Selected Course Header Banner */}
         <div className="p-4 rounded-2xl bg-emerald-950 text-ivory-50 flex items-center justify-between border border-gold-500/20">
           <div>
@@ -267,6 +289,8 @@ function AdmissionFormInner() {
           </a>
         </div>
       </form>
+        </div>
+      </div>
     </div>
   );
 }

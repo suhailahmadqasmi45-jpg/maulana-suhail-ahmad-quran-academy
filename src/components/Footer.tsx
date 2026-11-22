@@ -13,6 +13,7 @@ import {
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { APPROVED_COURSES } from "@/lib/courses";
 import { IslamicStarPattern } from "./IslamicPattern";
+import { AcademyLogo } from "./AcademyLogo";
 
 export function Footer() {
   const currentYear = 2026;
@@ -30,21 +31,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           {/* Column 1: Brand Info & Mission */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-gold-600 to-gold-400 p-0.5 shadow-lg flex items-center justify-center">
-                <div className="w-full h-full rounded-[14px] bg-emerald-950 flex items-center justify-center">
-                  <IslamicStarPattern className="w-7 h-7 text-gold-400" />
-                </div>
-              </div>
-              <div>
-                <span className="block font-serif text-lg font-bold text-ivory-50 tracking-tight leading-tight">
-                  Suhail
-                </span>
-                <span className="block text-xs font-semibold text-gold-400 uppercase tracking-widest">
-                  Online Quran Academy
-                </span>
-              </div>
-            </div>
+            <AcademyLogo size="lg" />
 
             <p className="text-sm text-ivory-200/80 leading-relaxed max-w-md">
               A premier international Islamic education institution dedicated to delivering authentic, structured Quranic recitation, Tajweed, Hifz, and foundational Islamic scholarship to children, beginners, and adults worldwide from the comfort of home.

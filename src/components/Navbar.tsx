@@ -13,6 +13,7 @@ import {
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { APPROVED_COURSES } from "@/lib/courses";
 import { IslamicStarPattern } from "./IslamicPattern";
+import { AcademyLogo } from "@/components/AcademyLogo";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -68,22 +69,10 @@ export function Navbar() {
             {/* Brand Logo & Name */}
             <Link
               href="/"
-              className="flex items-center gap-2 sm:gap-3 group shrink-0 min-w-0 max-w-[200px] sm:max-w-none"
+              className="group shrink-0 min-w-0"
+              aria-label="Suhail Online Quran Academy Home"
             >
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-gold-600 via-gold-500 to-gold-400 p-0.5 shadow-md flex items-center justify-center shrink-0">
-                <div className="w-full h-full rounded-full bg-emerald-950 flex items-center justify-center">
-                  <IslamicStarPattern className="w-4 h-4 sm:w-5 sm:h-5 text-gold-400 group-hover:rotate-45 transition-transform duration-500" />
-                </div>
-              </div>
-
-              <div className="min-w-0">
-                <span className="block font-serif text-sm sm:text-lg font-bold text-ivory-50 tracking-tight leading-tight group-hover:text-gold-300 transition-colors truncate">
-                  Suhail
-                </span>
-                <span className="block text-[8px] sm:text-[10px] font-semibold text-gold-400 uppercase tracking-widest truncate">
-                  Online Quran Academy
-                </span>
-              </div>
+              <AcademyLogo size="sm" />
             </Link>
 
             {/* Desktop Navigation Links: ONLY Courses, About Us, Contact Us */}

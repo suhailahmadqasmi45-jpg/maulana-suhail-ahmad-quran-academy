@@ -28,6 +28,7 @@ import {
   SubtleGeometricPattern,
 } from "@/components/IslamicPattern";
 import { formatCurrency } from "@/lib/utils";
+import { InteractiveMarquee } from "@/components/InteractiveMarquee";
 
 export default function HomePage() {
   const courses = APPROVED_COURSES;
@@ -305,12 +306,12 @@ export default function HomePage() {
           </p>
         </div>
 
-        {/* Right-to-Left Auto-Scrolling Carousel */}
-        <div className="relative w-full overflow-hidden py-4">
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-24 bg-gradient-to-r from-ivory-50 to-transparent z-10" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-24 bg-gradient-to-l from-ivory-50 to-transparent z-10" />
-
-          <div className="flex gap-6 animate-marquee-rtl hover:[animation-play-state:paused] active:[animation-play-state:paused] w-max select-none py-2">
+        {/* Interactive Right-to-Left Auto-Scrolling Carousel */}
+        <InteractiveMarquee
+          speed="normal"
+          direction="rtl"
+          badgeLabel="⇄ Right-to-Left Auto-Scroll • Click or tap any card to pause / resume"
+        >
             {[
               {
                 icon: Users,
@@ -387,12 +388,7 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        <div className="flex items-center justify-center gap-2 text-xs text-emerald-800/70 mt-3 font-medium">
-          <span>⇄ Auto-scrolling right to left • Hover or touch to pause</span>
-        </div>
+        </InteractiveMarquee>
       </section>
 
       {/* ========================================================
@@ -476,12 +472,12 @@ export default function HomePage() {
           </p>
         </div>
 
-        {/* Right-to-Left Auto-Scrolling Carousel */}
-        <div className="relative w-full overflow-hidden py-4">
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-24 bg-gradient-to-r from-ivory-50 to-transparent z-10" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-24 bg-gradient-to-l from-ivory-50 to-transparent z-10" />
-
-          <div className="flex gap-6 animate-marquee-rtl hover:[animation-play-state:paused] active:[animation-play-state:paused] w-max select-none py-2">
+        {/* Interactive Right-to-Left Auto-Scrolling Carousel */}
+        <InteractiveMarquee
+          speed="normal"
+          direction="rtl"
+          badgeLabel="⇄ Auto-scrolling Fee Plans • Click or tap any plan to pause and inspect"
+        >
             {[...courses, ...courses, ...courses].map((course, idx) => (
               <div
                 key={`${course.slug}-${idx}`}
@@ -533,11 +529,82 @@ export default function HomePage() {
                 </Link>
               </div>
             ))}
-          </div>
+        </InteractiveMarquee>
+      </section>
+
+      {/* ========================================================
+          OFFICIAL ADMISSION POSTERS & PROSPECTUS HIGHLIGHTS
+      ======================================================== */}
+      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1 text-xs font-bold rounded-full bg-gold-500/10 text-gold-700 border border-gold-500/30 uppercase tracking-widest">
+            <Sparkles className="w-3.5 h-3.5 text-gold-600" />
+            Official Academy Highlights
+          </span>
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-emerald-950">
+            Learn Quran Online With Certified Tutors
+          </h2>
+          <p className="text-sm sm:text-base text-dark-800/80">
+            Official curriculum, certified male & female teachers, and flexible one-to-one class schedules for children and adults worldwide.
+          </p>
         </div>
 
-        <div className="flex items-center justify-center gap-2 text-xs text-emerald-800/70 mt-3 font-medium">
-          <span>⇄ Auto-scrolling right to left • Hover or touch to pause</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-5xl mx-auto">
+          {/* Poster 1: Learn Quran Online (Dome, Courses, 1-on-1, Male/Female) */}
+          <div className="group relative rounded-3xl overflow-hidden bg-emerald-950 border-2 border-gold-500/40 shadow-2xl transition-all duration-300 hover:shadow-gold-500/20 hover:scale-[1.01] flex flex-col">
+            <div className="relative h-[480px] sm:h-[560px] w-full bg-emerald-950">
+              <Image
+                src="/images/posters/learn-quran-online-dome.jpg"
+                alt="Maulana Suhail Ahmad - Suhail Online Quran Academy Official Admission Poster"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-contain sm:object-cover"
+                priority
+              />
+            </div>
+            <div className="p-4 bg-emerald-950 border-t border-gold-500/30 flex items-center justify-between mt-auto">
+              <div>
+                <p className="text-xs font-bold text-gold-300">Maulana Suhail Ahmad</p>
+                <p className="text-[11px] text-ivory-200/80">One-to-One • Male & Female Tutors</p>
+              </div>
+              <a
+                href="https://wa.me/917505511251?text=Assalamu%20Alaikum%2C%20I%20would%20like%20to%20book%20a%20Free%20Demo%20Class%20at%20Suhail%20Online%20Quran%20Academy."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-xl bg-[#25D366] text-white text-xs font-bold hover:bg-[#20ba59] transition-colors shadow flex items-center gap-1.5"
+              >
+                <WhatsAppIcon className="w-3.5 h-3.5 fill-white" />
+                <span>Book Demo</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Poster 2: Kids Learning Quran (1-2 Days Free Trial) */}
+          <div className="group relative rounded-3xl overflow-hidden bg-emerald-950 border-2 border-gold-500/40 shadow-2xl transition-all duration-300 hover:shadow-gold-500/20 hover:scale-[1.01] flex flex-col">
+            <div className="relative h-[480px] sm:h-[560px] w-full bg-emerald-950">
+              <Image
+                src="/images/posters/learn-quran-online-kids.jpg"
+                alt="Suhail Online Quran Academy - Children & Adults Online Quran Classes Poster"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-contain sm:object-cover"
+                priority
+              />
+            </div>
+            <div className="p-4 bg-emerald-950 border-t border-gold-500/30 flex items-center justify-between mt-auto">
+              <div>
+                <p className="text-xs font-bold text-gold-300">Kids & Adults Classes</p>
+                <p className="text-[11px] text-ivory-200/80">1-2 Days FREE Trial Available</p>
+              </div>
+              <Link
+                href="/free-trial"
+                className="px-4 py-2 rounded-xl bg-gold-500 hover:bg-gold-400 text-emerald-950 text-xs font-bold transition-colors shadow flex items-center gap-1.5"
+              >
+                <span>Free Trial Class</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -763,12 +830,12 @@ export default function HomePage() {
             </p>
           </div>
 
-        {/* Right-to-Left Auto-Scrolling Carousel */}
-        <div className="relative w-full overflow-hidden py-4">
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-24 bg-gradient-to-r from-ivory-100 to-transparent z-10" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-24 bg-gradient-to-l from-ivory-100 to-transparent z-10" />
-
-          <div className="flex gap-6 animate-marquee-rtl-slow hover:[animation-play-state:paused] active:[animation-play-state:paused] w-max select-none py-2">
+        {/* Interactive Right-to-Left Auto-Scrolling Carousel */}
+        <InteractiveMarquee
+          speed="slow"
+          direction="rtl"
+          badgeLabel="⇄ Verified Student & Parent Feedback • Click or tap any review to pause and read"
+        >
             {[
               {
                 name: "Dr. Tariq Mahmood",
@@ -892,12 +959,7 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        <div className="flex items-center justify-center gap-2 text-xs text-emerald-800/70 mt-3 font-medium">
-          <span>⇄ Auto-scrolling right to left • Hover or touch to pause</span>
-        </div>
+        </InteractiveMarquee>
 
           <div className="mt-12 text-center">
             <Link
@@ -1000,12 +1062,12 @@ export default function HomePage() {
             </Link>
           </div>
 
-        {/* Right-to-Left Auto-Scrolling Carousel */}
-        <div className="relative w-full overflow-hidden py-4">
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-24 bg-gradient-to-r from-ivory-100 to-transparent z-10" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-24 bg-gradient-to-l from-ivory-100 to-transparent z-10" />
-
-          <div className="flex gap-6 animate-marquee-rtl hover:[animation-play-state:paused] active:[animation-play-state:paused] w-max select-none py-2">
+        {/* Interactive Right-to-Left Auto-Scrolling Carousel */}
+        <InteractiveMarquee
+          speed="normal"
+          direction="rtl"
+          badgeLabel="⇄ Latest Educational Articles • Click or tap any article to pause and read"
+        >
             {[
               {
                 slug: "how-to-learn-quran-online-beginners-guide",
@@ -1036,7 +1098,7 @@ export default function HomePage() {
                 title: "The Essential Role of Tajweed in Quranic Recitation: Rules & Mastery",
                 category: "Tajweed Rules",
                 readTime: "8 min read",
-                image: "https://images.unsplash.com/photo-1584286595398-a59f21d313f5?auto=format&fit=crop&q=80&w=800",
+                image: "/images/posters/learn-quran-online-dome.jpg",
                 desc: "Learn why precise articulation points (Makharij) and phonological characteristics preserve the sacred meaning of the Divine Revelation.",
               },
               // Duplicated for seamless continuous right-to-left loop
@@ -1069,7 +1131,7 @@ export default function HomePage() {
                 title: "The Essential Role of Tajweed in Quranic Recitation: Rules & Mastery",
                 category: "Tajweed Rules",
                 readTime: "8 min read",
-                image: "https://images.unsplash.com/photo-1584286595398-a59f21d313f5?auto=format&fit=crop&q=80&w=800",
+                image: "/images/posters/learn-quran-online-dome.jpg",
                 desc: "Learn why precise articulation points (Makharij) and phonological characteristics preserve the sacred meaning of the Divine Revelation.",
               },
             ].map((post, idx) => (
@@ -1115,12 +1177,7 @@ export default function HomePage() {
                 </div>
               </article>
             ))}
-          </div>
-        </div>
-
-        <div className="flex items-center justify-center gap-2 text-xs text-emerald-800/70 mt-3 font-medium">
-          <span>⇄ Auto-scrolling right to left • Hover or touch to pause</span>
-        </div>
+        </InteractiveMarquee>
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, Suspense } from "react";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { APPROVED_COURSES } from "@/lib/courses";
@@ -289,17 +290,40 @@ export default function FreeTrialPage() {
         breadcrumbs={[{ label: "Free Trial" }]}
       />
 
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Suspense
-          fallback={
-            <div className="p-12 text-center text-xs text-dark-800/60 flex items-center justify-center gap-2">
-              <Loader2 className="w-5 h-5 animate-spin text-emerald-900" />
-              <span>Loading trial booking portal...</span>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Official Free Trial Poster */}
+          <div className="lg:col-span-5 rounded-3xl overflow-hidden bg-emerald-950 border-2 border-gold-500/40 shadow-2xl">
+            <div className="relative h-[480px] sm:h-[580px] w-full bg-emerald-950">
+              <Image
+                src="/images/posters/learn-quran-online-kids.jpg"
+                alt="1-2 Days Free Trial Class - Suhail Online Quran Academy"
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-contain sm:object-cover"
+                priority
+              />
             </div>
-          }
-        >
-          <FreeTrialFormInner />
-        </Suspense>
+            <div className="p-4 bg-emerald-950 text-ivory-50 text-center border-t border-gold-500/30">
+              <p className="text-xs font-bold text-gold-300">1-2 Days FREE Trial Class</p>
+              <p className="text-[11px] text-ivory-200/80">Kids & Adults • Certified Male & Female Tutors</p>
+            </div>
+          </div>
+
+          {/* Form Container */}
+          <div className="lg:col-span-7">
+            <Suspense
+              fallback={
+                <div className="p-12 text-center text-xs text-dark-800/60 flex items-center justify-center gap-2">
+                  <Loader2 className="w-5 h-5 animate-spin text-emerald-900" />
+                  <span>Loading trial booking portal...</span>
+                </div>
+              }
+            >
+              <FreeTrialFormInner />
+            </Suspense>
+          </div>
+        </div>
       </div>
     </div>
   );
