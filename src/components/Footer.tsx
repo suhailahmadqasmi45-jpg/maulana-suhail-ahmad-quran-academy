@@ -120,6 +120,11 @@ export function Footer() {
                   Islamic Learning Blog
                 </Link>
               </li>
+              <li>
+                <Link href="/locations" className="hover:text-gold-300 transition-colors text-gold-400/90 font-medium">
+                  Locations Across India
+                </Link>
+              </li>
             </ul>
           </div>
 

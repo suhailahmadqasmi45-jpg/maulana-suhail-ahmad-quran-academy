@@ -14,9 +14,12 @@ import {
   ArrowRight,
   HelpCircle,
   UserCheck,
+  Award,
+  Sparkles,
 } from "lucide-react";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { QuranVerseBanner, SubtleGeometricPattern } from "@/components/IslamicPattern";
+import { getCanonicalUrl, getBaseSiteUrl } from "@/lib/seo-config";
 
 export function generateStaticParams() {
   return APPROVED_COURSES.map((course) => ({
@@ -28,9 +31,28 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   const course = getCourseBySlug(params.slug);
   if (!course) return { title: "Course Not Found" };
 
+  const canonicalUrl = getCanonicalUrl(`/courses/${course.slug}`);
+  const siteUrl = getBaseSiteUrl();
+
   return {
-    title: `${course.title} — Online Course`,
-    description: `${course.description} Monthly Fee: ${formatCurrency(course.monthlyFee)}/month. 1-on-1 personalized lessons with certified teachers.`,
+    title: `${course.title} Online Classes — ₹${course.monthlyFee}/month | Suhail Online Quran Academy`,
+    description: `${course.description} 1-on-1 personalized live classes with certified male & female teachers. Monthly fee: ₹${course.monthlyFee}. Free 2-day demo class.`,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: `${course.title} Online Classes — Suhail Online Quran Academy`,
+      description: `${course.description} Approved fee: ₹${course.monthlyFee}/month. 1-on-1 private classes.`,
+      url: canonicalUrl,
+      images: [
+        {
+          url: course.image.startsWith("http") ? course.image : `${siteUrl}${course.image}`,
+          width: 1200,
+          height: 630,
+          alt: `${course.title} - Suhail Online Quran Academy`,
+        },
+      ],
+    },
   };
 }
 
@@ -40,218 +62,367 @@ export default function CourseDetailPage({ params }: { params: { slug: string } 
     notFound();
   }
 
+  const siteUrl = getBaseSiteUrl();
+  const canonicalUrl = getCanonicalUrl(`/courses/${course.slug}`);
   const rawWhatsapp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+917505511251";
   const cleanWhatsapp = rawWhatsapp.replace(/[^0-9]/g, "");
   const whatsappUrl = `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(
-    `Assalamu Alaikum, I am interested in enrolling in the ${course.title} course at Suhail Online Quran Academy. Please share the admission details.`
+    `Assalamu Alaikum Maulana Suhail Ahmad Sahab, I want to inquire about admission in the ${course.title} course (Fee: ₹${course.monthlyFee}/month) at Suhail Online Quran Academy. Please guide me.`
   )}`;
 
+  // Course-specific FAQs for AEO & Voice Search
+  const courseFaqs = [
+    {
+      q: `What is the monthly fee for the ${course.title} course in India?`,
+      a: `The approved monthly fee for the ${course.title} course is exactly ₹${course.monthlyFee} per month. This includes 1-on-1 live private sessions with a dedicated teacher, individualized pacing, and no hidden admission fees or contracts.`,
+    },
+    {
+      q: `How are the ${course.title} classes conducted online?`,
+      a: `Classes are conducted live 1-on-1 via interactive video/audio calls (Zoom or Google Meet). The teacher shares the screen with digital Tajweed color-coded Mushaf or Qaida, correcting Makharij and pronunciation in real time.`,
+    },
+    {
+      q: `Can I take a free demo class before enrolling in ${course.title}?`,
+      a: `Yes, Suhail Online Quran Academy offers a complimentary 1-2 day free trial class. You can meet your assigned teacher, evaluate the teaching methodology, and decide on a schedule with zero financial obligation.`,
+    },
+    {
+      q: `Are female teachers available for girls and young children for ${course.title}?`,
+      a: `Yes, we have qualified female Aalima teachers dedicated to teaching sisters, adult women, and young children in complete privacy and comfort from home.`,
+    },
+    {
+      q: `What is the schedule and flexibility for this course?`,
+      a: `Classes are held 4 to 5 days a week for 30 minutes each. You can choose morning, evening, or weekend slots that fit school, work, or household routines across any Indian time zone.`,
+    },
+  ];
+
+  // Structured Data Schemas
+  const courseSchema = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: course.title,
+    description: course.description,
+    provider: {
+      "@type": "EducationalOrganization",
+      name: "Maulana Suhail Ahmad Online Quran Academy",
+      url: siteUrl,
+      telephone: "+91 75055 11251",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Nairana",
+        addressRegion: "Uttar Pradesh",
+        postalCode: "251203",
+        addressCountry: "IN",
+      },
+    },
+    offers: {
+      "@type": "Offer",
+      price: course.monthlyFee,
+      priceCurrency: "INR",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: course.monthlyFee,
+        priceCurrency: "INR",
+        unitText: "MONTH",
+      },
+      availability: "https://schema.org/InStock",
+      validFrom: "2026-01-01",
+    },
+    hasCourseInstance: {
+      "@type": "CourseInstance",
+      courseMode: "Online",
+      courseWorkload: "PT30M",
+      instructor: {
+        "@type": "Person",
+        name: "Maulana Suhail Ahmad",
+      },
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Courses",
+        item: `${siteUrl}/courses`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: course.title,
+        item: canonicalUrl,
+      },
+    ],
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: courseFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
+  };
+
   return (
-    <div className="space-y-16 pb-20">
-      <PageHeader
-        title={course.title}
-        subtitle={course.description}
-        arabicTitle={course.titleArabic}
-        badge={course.level}
-        breadcrumbs={[
-          { label: "Courses", href: "/courses" },
-          { label: course.title },
-        ]}
+    <>
+      {/* Structured Data Scripts */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        {/* Main 2-Column Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Left Column: Course In-Depth Details & Curriculum */}
-          <div className="lg:col-span-8 space-y-12">
-            {/* Featured Image */}
-            <div className="relative h-80 sm:h-96 w-full rounded-3xl overflow-hidden shadow-xl border border-emerald-950/10">
-              <Image
-                src={course.image}
-                alt={course.title}
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 800px"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/70 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 text-ivory-50 flex items-center justify-between">
-                <div>
-                  <span className="text-xs uppercase tracking-wider text-gold-400 font-semibold block">
-                    Curriculum Level
-                  </span>
-                  <h2 className="font-serif text-2xl font-bold">{course.title}</h2>
+      <div className="space-y-16 pb-20">
+        <PageHeader
+          title={course.title}
+          subtitle={course.description}
+          arabicTitle={course.titleArabic}
+          badge={course.level}
+          breadcrumbs={[
+            { label: "Courses", href: "/courses" },
+            { label: course.title },
+          ]}
+        />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          {/* Main 2-Column Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            {/* Left Column: Course In-Depth Details & Curriculum */}
+            <div className="lg:col-span-8 space-y-12">
+              {/* Featured Image */}
+              <div className="relative h-80 sm:h-96 w-full rounded-3xl overflow-hidden shadow-xl border border-emerald-950/10">
+                <Image
+                  src={course.image}
+                  alt={course.title}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/70 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6 text-ivory-50 flex items-center justify-between">
+                  <div>
+                    <span className="text-xs uppercase tracking-wider text-gold-400 font-semibold block">
+                      Curriculum Level
+                    </span>
+                    <h2 className="font-serif text-2xl font-bold">{course.title}</h2>
+                  </div>
+                  {course.titleUrdu && (
+                    <span className="font-urdu text-2xl text-gold-300 hidden sm:block" dir="rtl">
+                      {course.titleUrdu}
+                    </span>
+                  )}
                 </div>
-                {course.titleUrdu && (
-                  <span className="font-urdu text-2xl text-gold-300 hidden sm:block" dir="rtl">
-                    {course.titleUrdu}
-                  </span>
-                )}
               </div>
+
+              {/* In-depth Introduction */}
+              <section className="space-y-4">
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-emerald-950">
+                  Course Overview & Objectives
+                </h2>
+                <p className="text-dark-800/85 leading-relaxed text-sm sm:text-base">
+                  {course.fullDescription}
+                </p>
+                {course.slug === "aalim-course" && (
+                  <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-600/30 text-xs text-amber-950">
+                    <strong>Important Academic Note:</strong> The final syllabus, course duration, prerequisite qualifications, and scholarly certification details for the Aalim Course are subject to personalized assessment and confirmation by the academy administration.
+                  </div>
+                )}
+              </section>
+
+              {/* Key Learning Highlights */}
+              <section className="space-y-4">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-emerald-950">
+                  What You Will Master in This Course
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {course.highlights.map((h, idx) => (
+                    <div
+                      key={idx}
+                      className="p-3.5 rounded-2xl bg-ivory-50 border border-emerald-950/10 flex items-start gap-2.5 text-xs sm:text-sm text-dark-800/90"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+                      <span>{h}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* Detailed Syllabus / Curriculum Modules */}
+              <section className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-emerald-950">
+                    Syllabus Breakdown
+                  </h3>
+                  <span className="text-xs text-dark-800/60 font-medium">
+                    {course.curriculum.length} Structured Modules
+                  </span>
+                </div>
+
+                <div className="space-y-4">
+                  {course.curriculum.map((mod, idx) => (
+                    <div
+                      key={idx}
+                      className="p-5 rounded-2xl bg-ivory-50 border border-emerald-950/10 hover:border-gold-500/40 shadow-sm transition-all"
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-bold uppercase tracking-wider text-gold-600">
+                          {mod.week}
+                        </span>
+                        <span className="text-xs text-dark-800/60">Module {idx + 1}</span>
+                      </div>
+                      <h4 className="font-bold text-emerald-950 text-base mb-3">{mod.title}</h4>
+                      <ul className="space-y-1.5 pl-2 border-l-2 border-gold-500/30">
+                        {mod.topics.map((t, tidx) => (
+                          <li key={tidx} className="text-xs text-dark-800/80">
+                            • {t}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* Who Can Enroll */}
+              <section className="space-y-4">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-emerald-950">
+                  Who Can Enroll?
+                </h3>
+                <div className="p-6 rounded-3xl bg-ivory-100 border border-emerald-950/10 text-xs sm:text-sm text-dark-800/85 space-y-2">
+                  <p>• Children aged 4 and above (boys and girls)</p>
+                  <p>• Beginners of any age who have never read Arabic</p>
+                  <p>• Adults looking to correct lingering pronunciation errors and learn Tajweed rules</p>
+                  <p>• Sisters who prefer one-on-one instruction with qualified female teachers</p>
+                </div>
+              </section>
+
+              {/* Course-Specific FAQs (AEO & GEO Optimization) */}
+              <section className="space-y-6 pt-6 border-t border-emerald-950/10">
+                <div className="flex items-center gap-3">
+                  <HelpCircle className="w-6 h-6 text-gold-600" />
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-emerald-950">
+                    Frequently Asked Questions about {course.title}
+                  </h3>
+                </div>
+                <div className="space-y-4">
+                  {courseFaqs.map((faq, idx) => (
+                    <div
+                      key={idx}
+                      className="p-5 rounded-2xl bg-ivory-50 border border-emerald-950/10 space-y-2"
+                    >
+                      <h4 className="font-bold text-emerald-950 text-sm sm:text-base flex items-start gap-2">
+                        <span className="text-gold-600 font-serif">Q.</span>
+                        <span>{faq.q}</span>
+                      </h4>
+                      <p className="text-xs sm:text-sm text-dark-800/80 pl-5 leading-relaxed">
+                        {faq.a}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
             </div>
 
-            {/* In-depth Introduction */}
-            <section className="space-y-4">
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-emerald-950">
-                Course Overview & Objectives
-              </h2>
-              <p className="text-dark-800/85 leading-relaxed text-sm sm:text-base">
-                {course.fullDescription}
-              </p>
-              {course.slug === "aalim-course" && (
-                <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-600/30 text-xs text-amber-950">
-                  <strong>Important Academic Note:</strong> The final syllabus, course duration, prerequisite qualifications, and scholarly certification details for the Aalim Course are subject to personalized assessment and confirmation by the academy administration.
-                </div>
-              )}
-            </section>
-
-            {/* Key Learning Highlights */}
-            <section className="space-y-4">
-              <h3 className="font-serif text-xl sm:text-2xl font-bold text-emerald-950">
-                What You Will Master in This Course
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {course.highlights.map((h, idx) => (
-                  <div
-                    key={idx}
-                    className="p-3.5 rounded-2xl bg-ivory-50 border border-emerald-950/10 flex items-start gap-2.5 text-xs sm:text-sm text-dark-800/90"
-                  >
-                    <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
-                    <span>{h}</span>
+            {/* Right Column: Pricing & Quick Enrollment Sticky Card */}
+            <div className="lg:col-span-4">
+              <div className="sticky top-24 rounded-3xl bg-ivory-50 border-2 border-gold-500/40 shadow-2xl p-6 sm:p-8 space-y-6">
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-gold-600 block mb-1">
+                    Approved Course Fee
+                  </span>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-4xl font-serif font-bold text-emerald-950">
+                      {formatCurrency(course.monthlyFee)}
+                    </span>
+                    <span className="text-sm text-dark-800/70">/ month</span>
                   </div>
-                ))}
-              </div>
-            </section>
+                  {course.originalFee && (
+                    <p className="text-xs text-dark-800/60 mt-1">
+                      Regular: <span className="line-through">{formatCurrency(course.originalFee)}</span> (Save ₹100 every month)
+                    </p>
+                  )}
+                </div>
 
-            {/* Detailed Syllabus / Curriculum Modules */}
-            <section className="space-y-6">
-              <div className="flex items-center justify-between">
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-emerald-950">
-                  Syllabus Breakdown
-                </h3>
-                <span className="text-xs text-dark-800/60 font-medium">
-                  {course.curriculum.length} Structured Modules
-                </span>
-              </div>
-
-              <div className="space-y-4">
-                {course.curriculum.map((mod, idx) => (
-                  <div
-                    key={idx}
-                    className="p-5 rounded-2xl bg-ivory-50 border border-emerald-950/10 hover:border-gold-500/40 shadow-sm transition-all"
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-bold uppercase tracking-wider text-gold-600">
-                        {mod.week}
-                      </span>
-                      <span className="text-xs text-dark-800/60">Module {idx + 1}</span>
-                    </div>
-                    <h4 className="font-bold text-emerald-950 text-base mb-3">{mod.title}</h4>
-                    <ul className="space-y-1.5 pl-2 border-l-2 border-gold-500/30">
-                      {mod.topics.map((t, tidx) => (
-                        <li key={tidx} className="text-xs text-dark-800/80">
-                          • {t}
-                        </li>
-                      ))}
-                    </ul>
+                <div className="space-y-3 pt-4 border-t border-emerald-950/10 text-xs text-dark-800/80">
+                  <div className="flex items-center justify-between">
+                    <span className="flex items-center gap-1.5">
+                      <Clock className="w-4 h-4 text-gold-600" />
+                      <span>Duration</span>
+                    </span>
+                    <span className="font-semibold text-emerald-950">{course.duration}</span>
                   </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Who Can Enroll */}
-            <section className="space-y-4">
-              <h3 className="font-serif text-xl sm:text-2xl font-bold text-emerald-950">
-                Who Can Enroll?
-              </h3>
-              <div className="p-6 rounded-3xl bg-ivory-100 border border-emerald-950/10 text-xs sm:text-sm text-dark-800/85 space-y-2">
-                <p>• Children aged 4 and above (boys and girls)</p>
-                <p>• Beginners of any age who have never read Arabic</p>
-                <p>• Adults looking to correct lingering pronunciation errors and learn Tajweed rules</p>
-                <p>• Sisters who prefer one-on-one instruction with qualified female teachers</p>
-              </div>
-            </section>
-          </div>
-
-          {/* Right Column: Pricing & Quick Enrollment Sticky Card */}
-          <div className="lg:col-span-4">
-            <div className="sticky top-24 rounded-3xl bg-ivory-50 border-2 border-gold-500/40 shadow-2xl p-6 sm:p-8 space-y-6">
-              <div>
-                <span className="text-[11px] font-bold uppercase tracking-widest text-gold-600 block mb-1">
-                  Approved Course Fee
-                </span>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-serif font-bold text-emerald-950">
-                    {formatCurrency(course.monthlyFee)}
-                  </span>
-                  <span className="text-sm text-dark-800/70">/ month</span>
+                  <div className="flex items-center justify-between">
+                    <span className="flex items-center gap-1.5">
+                      <BookOpen className="w-4 h-4 text-gold-600" />
+                      <span>Level</span>
+                    </span>
+                    <span className="font-semibold text-emerald-950">{course.level}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="flex items-center gap-1.5">
+                      <UserCheck className="w-4 h-4 text-gold-600" />
+                      <span>Format</span>
+                    </span>
+                    <span className="font-semibold text-emerald-950">1-on-1 Private Lessons</span>
+                  </div>
                 </div>
-                {course.originalFee && (
-                  <p className="text-xs text-dark-800/60 mt-1">
-                    Regular: <span className="line-through">{formatCurrency(course.originalFee)}</span> (Save ₹100 every month)
-                  </p>
-                )}
-              </div>
 
-              <div className="space-y-3 pt-4 border-t border-emerald-950/10 text-xs text-dark-800/80">
-                <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-1.5">
-                    <Clock className="w-4 h-4 text-gold-600" />
-                    <span>Duration</span>
-                  </span>
-                  <span className="font-semibold text-emerald-950">{course.duration}</span>
+                {/* Action Buttons */}
+                <div className="space-y-3 pt-4 border-t border-emerald-950/10">
+                  <Link
+                    href={`/admission?course=${course.slug}`}
+                    className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-900 to-emerald-800 hover:from-emerald-800 hover:to-emerald-700 text-ivory-50 font-bold text-xs uppercase tracking-wider shadow-lg transition-all"
+                  >
+                    <span>Apply for Admission</span>
+                    <ArrowRight className="w-4 h-4 text-gold-400" />
+                  </Link>
+
+                  <Link
+                    href={`/free-trial?course=${course.slug}`}
+                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gold-500 hover:bg-gold-400 text-emerald-950 font-bold text-xs uppercase tracking-wider shadow transition-all"
+                  >
+                    <span>Book Free Trial Class</span>
+                  </Link>
+
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs uppercase tracking-wider shadow transition-all active:scale-95"
+                  >
+                    <WhatsAppIcon className="w-4 h-4 fill-white" />
+                    <span>Inquire on WhatsApp</span>
+                  </a>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-1.5">
-                    <BookOpen className="w-4 h-4 text-gold-600" />
-                    <span>Level</span>
-                  </span>
-                  <span className="font-semibold text-emerald-950">{course.level}</span>
+
+                <div className="pt-2 text-center text-[11px] text-dark-800/60">
+                  No long-term contracts • Cancel or pause anytime
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-1.5">
-                    <UserCheck className="w-4 h-4 text-gold-600" />
-                    <span>Format</span>
-                  </span>
-                  <span className="font-semibold text-emerald-950">1-on-1 Private Lessons</span>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="space-y-3 pt-4 border-t border-emerald-950/10">
-                <Link
-                  href={`/admission?course=${course.slug}`}
-                  className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-900 to-emerald-800 hover:from-emerald-800 hover:to-emerald-700 text-ivory-50 font-bold text-xs uppercase tracking-wider shadow-lg transition-all"
-                >
-                  <span>Apply for Admission</span>
-                  <ArrowRight className="w-4 h-4 text-gold-400" />
-                </Link>
-
-                <Link
-                  href={`/free-trial?course=${course.slug}`}
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gold-500 hover:bg-gold-400 text-emerald-950 font-bold text-xs uppercase tracking-wider shadow transition-all"
-                >
-                  <span>Book Free Trial Class</span>
-                </Link>
-
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs uppercase tracking-wider shadow transition-all active:scale-95"
-                >
-                  <WhatsAppIcon className="w-4 h-4 fill-white" />
-                  <span>Inquire on WhatsApp</span>
-                </a>
-              </div>
-
-              <div className="pt-2 text-center text-[11px] text-dark-800/60">
-                No long-term contracts • Cancel or pause anytime
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

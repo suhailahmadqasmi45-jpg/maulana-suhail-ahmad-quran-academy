@@ -2,177 +2,353 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
-import { ArrowLeft, Clock, Calendar, User, Share2, BookOpen, ArrowRight } from "lucide-react";
+import {
+  ArrowLeft,
+  Clock,
+  Calendar,
+  User,
+  BookOpen,
+  ArrowRight,
+  Sparkles,
+  HelpCircle,
+} from "lucide-react";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { QuranVerseBanner } from "@/components/IslamicPattern";
-
-const blogDatabase: Record<
-  string,
-  {
-    title: string;
-    category: string;
-    author: string;
-    date: string;
-    readTime: string;
-    image: string;
-    content: string[];
-  }
-> = {
-  "how-to-learn-quran-online-beginners-guide": {
-    title: "How to Learn Quran Online: A Comprehensive Guide for Beginners & Families",
-    category: "Quran Learning",
-    author: "Academy Academic Council",
-    date: "November 2026",
-    readTime: "6 min read",
-    image: "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&q=80&w=1200",
-    content: [
-      "In today’s interconnected digital era, geographic distance is no longer an obstacle to receiving traditional, authentic Islamic education. Students across the globe can now connect directly with qualified, patient, and certified Quran tutors from the sanctity of their homes.",
-      "1. Why Online Quran Learning is Thriving:\n• Individualized One-on-One Attention: Unlike crowded physical classrooms, online sessions ensure that 100% of the tutor’s focus is on listening, detecting slight phonetic variations, and providing immediate oral feedback.\n• Flexible Scheduling for Global Lifestyles: Whether you reside in India, the Gulf countries, the UK, Europe, or the Americas, class schedules can be coordinated to suit your school, office, or family timings.\n• Safe & Familiar Environment: Especially for young children and female learners, learning from home provides maximum comfort, safety, and family involvement.",
-      "2. Setting Up an Effective Learning Space:\n• Dedicated Peaceful Area: Choose a quiet room free from distractions, television, and heavy background noise.\n• Stable Internet & Clear Audio: A modest internet connection coupled with a clear headset or earphones allows the teacher and student to hear delicate Arabic letters like ح, خ, ص, and ض distinctly.\n• Respectful Posture with the Mushaf: Place the Holy Quran or Qaida on an elevated wooden stand (Rihal) or desk, maintaining physical and spiritual adab.",
-      "3. The Golden Rule of Consistency:\nThe Prophet Muhammad (peace be upon him) said: 'The deeds most loved by Allah are those done regularly, even if they are small.' (Sahih al-Bukhari). Spending 30 minutes daily with a dedicated teacher produces far greater retention and spiritual sweetness than irregular multi-hour sessions.",
-    ],
-  },
-  "what-is-noorani-qaida-foundation-of-quran-reading": {
-    title: "What Is Noorani Qaida? The Essential Foundation of Quranic Recitation",
-    category: "Tajweed & Qaida",
-    author: "Maulana Suhail Ahmad",
-    date: "November 2026",
-    readTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1587617425953-9075d28b8c46?auto=format&fit=crop&q=80&w=1200",
-    content: [
-      "Compiled by the venerable scholar Sheikh Noor Muhammad Haqqani, the Noorani Qaida has served as the universal primer for Quranic literacy for generations across the Muslim world.",
-      "The Systematic Progression of Noorani Qaida:\n1. Mufradat (Single Letters): Mastering the 29 consonants individually, emphasizing their specific point of articulation (Makhraj).\n2. Murakkabat (Compound Forms): Learning how Arabic letters transform their visual shapes when appearing at the beginning, middle, or end of a word.\n3. Harakat (Short Vowels): Pronouncing Zabar, Zair, and Pesh swiftly without dragging or tilting the vowel.\n4. Tanween & Sukoon: Understanding nasalization (Ghunnah) and resting consonants with their associated phonetic bounces (Qalqalah).\n5. Rules of Madd & Tashdeed: Transitioning from simple syllables to complex multi-letter words identical to those found in the Holy Quran.",
-      "Why Beginners Should Never Skip Noorani Qaida:\nAttempting to read the Holy Quran without mastering phonetic foundations frequently leads to ingrained pronunciation errors that become exceedingly difficult to unlearn later. A thorough study of Noorani Qaida guarantees that when a student opens the Mushaf, their tongue glides smoothly across the sacred text with confidence and correct Tajweed.",
-    ],
-  },
-  "effective-quran-memorization-hifz-tips": {
-    title: "Proven Quran Memorization (Hifz) Strategies: Tips from Experienced Huffaz",
-    category: "Hifz Tips",
-    author: "Academy Hifz Department",
-    date: "November 2026",
-    readTime: "7 min read",
-    image: "https://images.unsplash.com/photo-1542816417-0983c9c9ad53?auto=format&fit=crop&q=80&w=1200",
-    content: [
-      "Committing the 6,236 verses of the Holy Quran to heart is an incomparable spiritual honor. However, true memorization is not merely committing words to short-term memory—it is anchoring the sacred text deep into long-term subconscious recall.",
-      "The Golden Rule: Sabaq, Sabqi, and Manzil:\nThe classical Islamic seminary system relies upon a three-tiered daily cycle:\n• Sabaq (New Lesson): The new portion (usually half a page to one page) memorized that day after multiple readings with correct Tajweed.\n• Sabqi (Recent Memorization): The preceding 5 to 10 pages memorized in recent days. This strengthens newly formed neural pathways.\n• Manzil / Amokhta (Long-Term Retention): Daily systematic revision of entire previously completed Juz. A Hafiz should cycle through their entire memorization at least once every 10 to 15 days.",
-      "Practical Advice for Hifz Students:\n1. Use One Mushaf Edition Exclusively: Visual memory plays a pivotal role in Hifz. Always use the same 15-line or 16-line print so page boundaries, line placements, and aya positions remain imprinted in your visual memory.\n2. Recite Aloud to a Teacher: Never assess your own memorization in silence. Self-recitation hides blind spots. Having a vigilant teacher interrupt each hesitation is the secret to enduring retention.\n3. Pray with What You Memorize: Reciting newly memorized portions during Tahajjud and Sunnah prayers cements verses permanently into your heart.",
-    ],
-  },
-  "importance-of-tajweed-in-quran-recitation": {
-    title: "The Essential Importance of Tajweed: Reciting the Quran as Revealed",
-    category: "Tajweed",
-    author: "Maulana Suhail Ahmad",
-    date: "November 2026",
-    readTime: "6 min read",
-    image: "https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&q=80&w=1200",
-    content: [
-      "Linguistically, Tajweed means 'betterment' or 'beautification'. In Islamic terminology, it signifies giving every Arabic letter its rightful sound, characteristic, and origin without exaggeration or deficiency.",
-      "Allah the Almighty instructs in Surah Al-Muzzammil:\n'And recite the Quran with measured, distinct recitation.' (Quran 73:4)",
-      "Minor Errors vs. Meaning-Altering Errors:\nIn the Arabic language, slight mispronunciations can radically alter the theological meaning of a verse:\n• Confusing ق (Qaf) with ك (Kaf): Changing Qalb (Heart) into Kalb (Canine).\n• Confusing ح (Haa) with هـ (Haa): Changing Al-Hamd (All Praise) into a distorted sound.\n• Neglecting Madd (Prolongation): Omitting elongation can turn affirmative statements into negations.",
-      "Learning Tajweed under a competent, patient teacher is not an optional luxury; it is the protective shield that preserves the integrity of Divine revelation.",
-    ],
-  },
-};
+import { BLOG_POSTS, getBlogPostBySlug } from "@/lib/blog-data";
+import { APPROVED_COURSES } from "@/lib/courses";
+import {
+  SEO_CONFIG,
+  getCanonicalUrl,
+  getBaseSiteUrl,
+  getWhatsAppInquiryUrl,
+} from "@/lib/seo-config";
 
 export function generateStaticParams() {
-  return Object.keys(blogDatabase).map((slug) => ({ slug }));
+  return BLOG_POSTS.map((post) => ({
+    slug: post.slug,
+  }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  const post = blogDatabase[params.slug];
-  if (!post) return { title: "Article Not Found" };
+export function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Metadata {
+  const post = getBlogPostBySlug(params.slug);
+  if (!post) {
+    return { title: "Article Not Found" };
+  }
+
+  const canonicalUrl = getCanonicalUrl(`/blog/${post.slug}`);
+  const baseUrl = getBaseSiteUrl();
+
   return {
-    title: `${post.title} | Suhail Online Quran Academy`,
-    description: post.content[0],
+    title: `${post.title} | ${SEO_CONFIG.shortName}`,
+    description: post.metaDescription,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.metaDescription,
+      url: canonicalUrl,
+      siteName: SEO_CONFIG.academyName,
+      type: "article",
+      publishedTime: "2026-11-20T00:00:00.000Z",
+      authors: [post.author],
+      images: [
+        {
+          url: post.image.startsWith("http")
+            ? post.image
+            : `${baseUrl}${post.image}`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.metaDescription,
+      images: [
+        post.image.startsWith("http")
+          ? post.image
+          : `${baseUrl}${post.image}`,
+      ],
+    },
   };
 }
 
-export default function BlogPostDetailPage({ params }: { params: { slug: string } }) {
-  const post = blogDatabase[params.slug];
+export default function BlogPostDetailPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const post = getBlogPostBySlug(params.slug);
   if (!post) {
     notFound();
   }
+
+  const baseUrl = getBaseSiteUrl();
+  const canonicalUrl = getCanonicalUrl(`/blog/${post.slug}`);
+
+  const relatedCourse = post.relatedCourseSlug
+    ? APPROVED_COURSES.find((c) => c.slug === post.relatedCourseSlug)
+    : APPROVED_COURSES[0];
+
+  const whatsappInquiryUrl = getWhatsAppInquiryUrl({
+    courseTitle: relatedCourse?.title,
+    customMessage: `Assalamu Alaikum, I read your article "${post.title}" on Suhail Online Quran Academy and would like to inquire about enrolling in Quran classes.`,
+  });
+
+  // Schema.org Article Schema
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.metaDescription,
+    "image": post.image.startsWith("http")
+      ? post.image
+      : `${baseUrl}${post.image}`,
+    "datePublished": "2026-11-20T00:00:00.000Z",
+    "dateModified": "2026-11-22T00:00:00.000Z",
+    "author": {
+      "@type": "Person",
+      "name": post.author,
+      "jobTitle": "Academic Director & Islamic Scholar",
+    },
+    "publisher": {
+      "@type": "EducationalOrganization",
+      "name": SEO_CONFIG.academyName,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${baseUrl}/images/posters/learn-quran-online-dome.jpg`,
+      },
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": canonicalUrl,
+    },
+  };
+
+  // Schema.org BreadcrumbList Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": baseUrl,
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": `${baseUrl}/blog`,
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": canonicalUrl,
+      },
+    ],
+  };
+
+  // Schema.org FAQPage Schema if article has FAQs
+  const faqSchema = post.faq
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": post.faq.map((f) => ({
+          "@type": "Question",
+          "name": f.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": f.answer,
+          },
+        })),
+      }
+    : null;
 
   return (
     <div className="space-y-16 pb-20">
       <PageHeader
         title={post.title}
-        subtitle={`Category: ${post.category} • ${post.readTime}`}
+        subtitle={`Written and verified by ${post.author} • ${post.category}`}
+        arabicTitle="مدونة المعرفة القرآنية"
         badge={post.category}
         breadcrumbs={[
           { label: "Blog", href: "/blog" },
-          { label: post.title.slice(0, 30) + "..." },
+          { label: post.title },
         ]}
       />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-900 hover:text-emerald-700"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Back to All Articles</span>
-        </Link>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        {/* Navigation Return Link */}
+        <div>
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 text-xs font-bold text-emerald-900 hover:text-emerald-700 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Return to All Articles</span>
+          </Link>
+        </div>
 
-        {/* Featured Image */}
-        <div className="relative h-72 sm:h-96 w-full rounded-3xl overflow-hidden shadow-2xl border border-emerald-950/10">
+        {/* Featured Visual Banner */}
+        <div className="relative h-72 sm:h-96 md:h-[450px] w-full rounded-3xl overflow-hidden border border-emerald-950/15 shadow-2xl bg-emerald-950">
           <Image
             src={post.image}
             alt={post.title}
             fill
             priority
-            sizes="(max-width: 1024px) 100vw, 800px"
+            sizes="(max-width: 1024px) 100vw, 900px"
             className="object-cover"
           />
-        </div>
-
-        {/* Author / Metadata bar */}
-        <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-ivory-100 border border-emerald-950/10 text-xs text-dark-800/80">
-          <div className="flex items-center gap-2">
-            <User className="w-4 h-4 text-emerald-800" />
-            <span className="font-semibold text-emerald-950">{post.author}</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1">
-              <Calendar className="w-3.5 h-3.5 text-gold-600" />
-              {post.date}
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1">
-              <Clock className="w-3.5 h-3.5 text-gold-600" />
-              {post.readTime}
-            </span>
-          </div>
-        </div>
-
-        {/* Content Paragraphs */}
-        <div className="prose prose-emerald max-w-none space-y-6 text-sm sm:text-base text-dark-800/85 leading-relaxed">
-          {post.content.map((p, idx) => (
-            <div key={idx} className="whitespace-pre-line bg-ivory-50 p-6 rounded-2xl border border-emerald-950/5 shadow-sm">
-              {p}
+          <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-transparent to-transparent" />
+          <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-center justify-between gap-4 text-ivory-50 text-xs">
+            <div className="flex items-center gap-3">
+              <span className="flex items-center gap-1.5 bg-emerald-900/90 backdrop-blur-md px-3 py-1 rounded-full border border-gold-500/30 font-semibold">
+                <User className="w-3.5 h-3.5 text-gold-400" />
+                <span>{post.author}</span>
+              </span>
+              <span className="flex items-center gap-1.5 bg-emerald-900/90 backdrop-blur-md px-3 py-1 rounded-full border border-gold-500/30">
+                <Calendar className="w-3.5 h-3.5 text-gold-400" />
+                <span>{post.date}</span>
+              </span>
             </div>
-          ))}
-        </div>
-
-        {/* Article End Action CTA */}
-        <div className="p-8 rounded-3xl bg-emerald-950 text-ivory-50 border border-gold-500/30 text-center space-y-4">
-          <h3 className="font-serif text-2xl font-bold text-white">
-            Ready to Begin Learning with Certified Scholars?
-          </h3>
-          <p className="text-xs sm:text-sm text-ivory-200/80 max-w-md mx-auto">
-            Book a complimentary 1-on-1 trial class at Suhail Online Quran Academy today.
-          </p>
-          <div className="pt-2">
-            <Link
-              href="/free-trial"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gold-500 text-emerald-950 font-bold text-xs uppercase tracking-wider hover:bg-gold-400 transition-colors shadow"
-            >
-              <span>Book Your Free Trial</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+            <span className="flex items-center gap-1.5 bg-emerald-900/90 backdrop-blur-md px-3 py-1 rounded-full border border-gold-500/30">
+              <Clock className="w-3.5 h-3.5 text-gold-400" />
+              <span>{post.readTime}</span>
+            </span>
           </div>
         </div>
+
+        {/* Article Body */}
+        <article className="prose prose-emerald max-w-none space-y-6 text-dark-800 leading-relaxed font-sans text-sm sm:text-base">
+          {post.content.map((paragraph, index) => {
+            const isHeading =
+              paragraph.startsWith("1.") ||
+              paragraph.startsWith("2.") ||
+              paragraph.startsWith("3.") ||
+              paragraph.startsWith("The Systematic Progression") ||
+              paragraph.startsWith("Why Beginners Should Never Skip") ||
+              paragraph.startsWith("The Classical Tri-Fold Method") ||
+              paragraph.startsWith("Practical Advice for Hifz") ||
+              paragraph.startsWith("Minor Errors vs") ||
+              paragraph.startsWith("Factors That Influence") ||
+              paragraph.startsWith("Transparent Pricing") ||
+              paragraph.startsWith("7 Critical Factors");
+
+            return (
+              <div
+                key={index}
+                className="p-5 sm:p-6 rounded-2xl bg-ivory-50 border border-emerald-950/10 shadow-sm space-y-3"
+              >
+                {isHeading ? (
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-emerald-950 mb-2">
+                    {paragraph.split("\n")[0]}
+                  </h3>
+                ) : null}
+                <div className="text-dark-800/85 leading-relaxed whitespace-pre-line text-xs sm:text-sm">
+                  {isHeading
+                    ? paragraph.substring(paragraph.indexOf("\n") + 1)
+                    : paragraph}
+                </div>
+              </div>
+            );
+          })}
+        </article>
+
+        {/* Dedicated Article FAQs if available */}
+        {post.faq && post.faq.length > 0 && (
+          <div className="p-8 rounded-3xl bg-ivory-100 border border-emerald-950/15 shadow-sm space-y-6">
+            <div className="flex items-center gap-2 text-emerald-900 font-bold text-xs uppercase tracking-wider">
+              <HelpCircle className="w-4 h-4 text-gold-600" />
+              <span>Frequently Asked Questions</span>
+            </div>
+            <h3 className="font-serif text-2xl font-bold text-emerald-950">
+              Common Questions About This Topic
+            </h3>
+            <div className="space-y-4">
+              {post.faq.map((f, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 rounded-xl bg-ivory-50 border border-emerald-950/10 space-y-1.5"
+                >
+                  <h4 className="font-serif font-bold text-sm text-emerald-950">
+                    {f.question}
+                  </h4>
+                  <p className="text-xs text-dark-800/80 leading-relaxed">
+                    {f.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Recommended Course & WhatsApp Conversion CTA */}
+        {relatedCourse && (
+          <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-emerald-950 via-emerald-900 to-emerald-950 text-ivory-50 shadow-2xl border-2 border-gold-500/40 space-y-6 text-center sm:text-left">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div className="space-y-2 max-w-xl">
+                <span className="text-xs font-bold uppercase tracking-widest text-gold-400">
+                  Recommended Course For This Subject
+                </span>
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+                  {relatedCourse.title} (₹{relatedCourse.monthlyFee}/month)
+                </h3>
+                <p className="text-xs sm:text-sm text-ivory-200/80 leading-relaxed font-sans">
+                  {relatedCourse.description} Learn 1-on-1 with certified instructors. Attend a 100% free trial class.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto shrink-0">
+                <a
+                  href={whatsappInquiryUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-[#25D366] hover:bg-[#20ba59] text-white shadow-xl transition-all active:scale-95"
+                >
+                  <WhatsAppIcon className="w-4 h-4 fill-white" />
+                  <span>Inquire on WhatsApp</span>
+                </a>
+
+                <Link
+                  href={`/courses/${relatedCourse.slug}`}
+                  className="inline-flex items-center justify-center gap-1.5 px-6 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-gold-500 hover:bg-gold-400 text-emerald-950 shadow transition-all active:scale-95"
+                >
+                  <span>Course Details</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
+
+      {/* JSON-LD Schemas */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
     </div>
   );
 }

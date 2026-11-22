@@ -1,10 +1,14 @@
 import { MetadataRoute } from "next";
 import { APPROVED_COURSES } from "@/lib/courses";
+import { BLOG_POSTS } from "@/lib/blog-data";
+import { INDIA_LOCATIONS } from "@/lib/location-data";
+import { getBaseSiteUrl } from "@/lib/seo-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://maulanasuhailquranacademy.com";
+  const baseUrl = getBaseSiteUrl();
   const now = new Date();
 
+  // Core Static Routes
   const staticRoutes = [
     "",
     "/about",
@@ -17,9 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/testimonials",
     "/faq",
     "/blog",
+    "/locations",
     "/contact",
-    "/login",
-    "/register",
     "/privacy-policy",
     "/terms-and-conditions",
     "/refund-policy",
@@ -27,27 +30,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${route}`,
     lastModified: now,
     changeFrequency: "weekly" as const,
-    priority: route === "" ? 1.0 : route.startsWith("/courses") || route === "/admission" ? 0.9 : 0.7,
+    priority:
+      route === ""
+        ? 1.0
+        : route.startsWith("/courses") || route === "/admission" || route === "/free-trial"
+        ? 0.9
+        : 0.8,
   }));
 
+  // 4 Approved Course Routes
   const courseRoutes = APPROVED_COURSES.map((course) => ({
     url: `${baseUrl}/courses/${course.slug}`,
     lastModified: now,
     changeFrequency: "weekly" as const,
-    priority: 0.9,
+    priority: 0.95,
   }));
 
-  const blogRoutes = [
-    "how-to-learn-quran-online-beginners-guide",
-    "what-is-noorani-qaida-foundation-of-quran-reading",
-    "effective-quran-memorization-hifz-tips",
-    "importance-of-tajweed-in-quran-recitation",
-  ].map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
+  // Educational Blog Guides
+  const blogRoutes = BLOG_POSTS.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
     lastModified: now,
     changeFrequency: "monthly" as const,
-    priority: 0.6,
+    priority: 0.85,
   }));
 
-  return [...staticRoutes, ...courseRoutes, ...blogRoutes];
+  // India-Wide Geographic Distance Learning Hubs
+  const locationRoutes = INDIA_LOCATIONS.map((loc) => ({
+    url: `${baseUrl}/locations/${loc.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
+
+  return [...staticRoutes, ...courseRoutes, ...blogRoutes, ...locationRoutes];
 }
