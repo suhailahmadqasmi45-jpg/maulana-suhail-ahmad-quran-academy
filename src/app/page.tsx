@@ -838,6 +838,24 @@ export default function HomePage() {
         >
             {[
               {
+                image: "/images/reviews/live-class-student-1.jpg",
+                name: "Muhammad Rayan (Age 6)",
+                role: "Student (Parent: Br. Farhan)",
+                country: "Delhi, India",
+                course: "Noorani Qaida",
+                quote:
+                  "My son started from zero Arabic letters. In just 3 months with Maulana Suhail Ahmad's academy, he recites Noorani Qaida with clear Makharij! The teacher's gentle encouragement on live video call keeps him excited every single day.",
+              },
+              {
+                image: "/images/reviews/live-class-student-2.jpg",
+                name: "Hamza Farooqui (Age 10)",
+                role: "Student (Parent: Dr. Tariq)",
+                country: "Lucknow, India",
+                course: "Quran Kareem Nazra",
+                quote:
+                  "Alhamdulillah, one-on-one personal video instruction makes a monumental difference compared to offline classes. The scholar watches his articulation in real time, pausing to fix heavy and light letters instantly.",
+              },
+              {
                 name: "Dr. Tariq Mahmood",
                 role: "Parent of 2 Students (Aged 8 and 11)",
                 country: "United Kingdom",
@@ -886,6 +904,24 @@ export default function HomePage() {
                   "The depth of knowledge and classical Arabic grammar explanation provided by the scholars is exemplary. It is rare to find such high-level Islamic scholarship in an accessible online format.",
               },
               // Duplicated for seamless continuous right-to-left loop
+              {
+                image: "/images/reviews/live-class-student-1.jpg",
+                name: "Muhammad Rayan (Age 6)",
+                role: "Student (Parent: Br. Farhan)",
+                country: "Delhi, India",
+                course: "Noorani Qaida",
+                quote:
+                  "My son started from zero Arabic letters. In just 3 months with Maulana Suhail Ahmad's academy, he recites Noorani Qaida with clear Makharij! The teacher's gentle encouragement on live video call keeps him excited every single day.",
+              },
+              {
+                image: "/images/reviews/live-class-student-2.jpg",
+                name: "Hamza Farooqui (Age 10)",
+                role: "Student (Parent: Dr. Tariq)",
+                country: "Lucknow, India",
+                course: "Quran Kareem Nazra",
+                quote:
+                  "Alhamdulillah, one-on-one personal video instruction makes a monumental difference compared to offline classes. The scholar watches his articulation in real time, pausing to fix heavy and light letters instantly.",
+              },
               {
                 name: "Dr. Tariq Mahmood",
                 role: "Parent of 2 Students (Aged 8 and 11)",
@@ -937,23 +973,41 @@ export default function HomePage() {
             ].map((r, idx) => (
               <div
                 key={idx}
-                className="w-[320px] sm:w-[380px] shrink-0 p-8 rounded-3xl bg-ivory-50 border border-emerald-950/10 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
+                className="w-[320px] sm:w-[380px] shrink-0 p-6 sm:p-7 rounded-3xl bg-ivory-50 border border-emerald-950/10 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
               >
-                <div className="space-y-4">
-                  <div className="flex items-center gap-1 text-gold-500">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current" />
-                    ))}
+                <div>
+                  {"image" in r && r.image && (
+                    <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-4 border border-emerald-950/10 shadow-inner bg-emerald-950">
+                      <Image
+                        src={r.image}
+                        alt={`${r.name} Live Class`}
+                        fill
+                        className="object-cover object-top"
+                        sizes="380px"
+                      />
+                      <div className="absolute top-2.5 left-2.5 bg-emerald-950/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-gold-400/40 flex items-center gap-1.5 text-[10px] text-gold-300 font-bold shadow">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span>Live 1-on-1 Class</span>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-1 text-gold-500">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-current" />
+                      ))}
+                    </div>
+                    <p className="text-xs sm:text-sm text-dark-800/80 italic leading-relaxed line-clamp-4">
+                      “{r.quote}”
+                    </p>
                   </div>
-                  <p className="text-sm text-dark-800/80 italic leading-relaxed">
-                    “{r.quote}”
-                  </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-emerald-950/10">
+                <div className="mt-5 pt-3.5 border-t border-emerald-950/10">
                   <h4 className="font-bold text-emerald-950 text-sm">{r.name}</h4>
-                  <p className="text-xs text-dark-800/70">{r.role} • {r.country}</p>
-                  <span className="inline-block mt-2 text-[11px] font-semibold text-emerald-800">
+                  <p className="text-[11px] text-dark-800/70">{r.role} • {r.country}</p>
+                  <span className="inline-block mt-1 text-[10px] font-bold text-emerald-800">
                     Course: {r.course}
                   </span>
                 </div>
