@@ -25,11 +25,11 @@ const baseUrl = getBaseSiteUrl();
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Online Quran Classes in India | Maulana Suhail Ahmad Quran Academy",
-    template: `%s | ${SEO_CONFIG.academyName}`,
+    default: "Online Quran Classes in India | Suhail Online Quran Academy",
+    template: `%s | ${SEO_CONFIG.shortName}`,
   },
   description:
-    "Learn Quran from Home, From Anywhere in the World. Premier online Quran academy in India offering 1-on-1 classes: Noorani Qaida (₹1,399/mo), Quran Kareem Nazra (₹1,399/mo), Hifz-e-Quran (₹1,899/mo), and Aalim Course (₹1,399/mo). Guided by Maulana Suhail Ahmad. Book a Free Trial today.",
+    "Learn Quran from Home, From Anywhere in the World. Official Website of Suhail Online Quran Academy (www.suhailahmedonlinequranacademy.com). 1-on-1 private lessons in Noorani Qaida (₹1,399/mo), Quran Kareem Nazra (₹1,399/mo), Hifz-e-Quran (₹1,899/mo), and Aalim Course (₹1,399/mo) with certified male & female teachers. 1-2 Days Free Trial Class.",
   keywords: [
     // Primary Commercial Keywords
     "Online Quran Classes",
@@ -116,6 +116,14 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/icon.png",
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "googlec71b02c8b57a2293",

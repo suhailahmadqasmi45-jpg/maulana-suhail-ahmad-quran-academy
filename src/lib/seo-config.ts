@@ -11,6 +11,7 @@ export const SEO_CONFIG = {
   shortName: "Suhail Online Quran Academy",
   legalName: "Suhail Online Quran Academy",
   founderName: "Maulana Suhail Ahmad",
+  siteUrl: "https://www.suhailahmedonlinequranacademy.com",
   primaryHeadline: "Learn Quran from Home, From Anywhere in the World",
   tagline: "Premier India-Wide Online Quran Classes with 1-on-1 Certified Islamic Scholars",
   contactEmail: "info@maulanasuhailquranacademy.com",
@@ -81,7 +82,7 @@ export function getBaseSiteUrl(): string {
   const url =
     process.env.NEXT_PUBLIC_SITE_URL ||
     process.env.NEXT_PUBLIC_APP_URL ||
-    "https://maulana-suhail-ahmad-quran-academy.vercel.app";
+    "https://www.suhailahmedonlinequranacademy.com";
   return url.replace(/\/+$/, "");
 }
 
