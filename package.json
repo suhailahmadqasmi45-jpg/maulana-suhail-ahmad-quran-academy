@@ -9,7 +9,8 @@
     "lint": "next lint",
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push",
-    "prisma:seed": "node prisma/seed.js"
+    "prisma:seed": "node prisma/seed.js",
+    "delete-site": "vercel project rm maulana-suhail-ahmad-quran-academy --yes"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
