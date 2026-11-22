@@ -12,8 +12,16 @@ export function StructuredData() {
     "url": baseUrl,
     "logo": `${baseUrl}/logo.png`,
     "description": "Premier international online Quran academy offering structured courses in Noorani Qaida, Quran Kareem Nazra, Hifz-e-Quran, and Aalim Course.",
-    "telephone": "+91-98765-43210",
+    "telephone": "+91-75055-11251",
     "email": "info@maulanasuhailquranacademy.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Village Nairana",
+      "addressLocality": "Muzaffarnagar",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "251203",
+      "addressCountry": "IN"
+    },
     "sameAs": [],
     "areaServed": "Worldwide",
     "educationalCredentialAwarded": "Quran Recitation & Hifz Certification",

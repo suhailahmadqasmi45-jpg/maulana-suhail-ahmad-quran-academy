@@ -34,13 +34,13 @@ export function Navbar() {
     setCoursesDropdownOpen(false);
   }, [pathname]);
 
-  const rawWhatsapp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+919876543210";
+  const rawWhatsapp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+917505511251";
   const cleanWhatsapp = rawWhatsapp.replace(/[^0-9]/g, "");
   const whatsappUrl = `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(
     "Assalamu Alaikum, I would like to inquire about Quran classes at Suhail Online Quran Academy."
   )}`;
 
-  const rawPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || "+91 98765 43210";
+  const rawPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || "+91 75055 11251";
   const cleanPhone = rawPhone.replace(/[^0-9+]/g, "");
 
   // ONLY Courses, About Us, and Contact Us

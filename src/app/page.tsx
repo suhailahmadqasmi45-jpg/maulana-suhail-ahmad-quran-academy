@@ -90,7 +90,7 @@ export default function HomePage() {
                 </Link>
 
                 <a
-                  href="https://wa.me/919876543210?text=Assalamu%20Alaikum%2C%20I%20would%20like%20to%20inquire%20about%20Quran%20classes%20at%20Maulana%20Suhail%20Ahmad%20Online%20Quran%20Academy."
+                  href="https://wa.me/917505511251?text=Assalamu%20Alaikum%2C%20I%20would%20like%20to%20inquire%20about%20Quran%20classes%20at%20Suhail%20Online%20Quran%20Academy."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm bg-[#25D366] hover:bg-[#20ba59] text-white shadow-xl hover:shadow-[#25D366]/30 transition-all duration-300 hover:scale-[1.02] active:scale-95"
@@ -232,8 +232,8 @@ export default function HomePage() {
           <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-emerald-950/10">
             <div className="relative h-96 w-full">
               <Image
-                src="https://images.unsplash.com/photo-1587617425953-9075d28b8c46?auto=format&fit=crop&q=80&w=1200"
-                alt="Teacher conducting online Quran lessons with authentic Tajweed"
+                src="/images/suhail/maulana-suhail-quran.jpg"
+                alt="Maulana Suhail Ahmad - Founder & Academic Director holding the Holy Quran"
                 fill
                 sizes="(max-width: 1024px) 100vw, 600px"
                 className="object-cover"
@@ -241,10 +241,10 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 text-ivory-50">
                 <p className="text-xs uppercase tracking-wider text-gold-400 font-semibold">
-                  Safe & Disciplined Environment
+                  Scholarly Supervision
                 </p>
                 <h3 className="font-serif text-lg font-bold">
-                  Personalized Mentorship for Children & Sisters
+                  Under the Guidance of Maulana Suhail Ahmad
                 </h3>
               </div>
             </div>

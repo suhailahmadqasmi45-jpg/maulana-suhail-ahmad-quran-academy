@@ -9,10 +9,10 @@ export function WhatsAppFloating({
 }: {
   courseTitle?: string;
 }) {
-  const rawWhatsapp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+919876543210";
+  const rawWhatsapp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+917505511251";
   const cleanWhatsapp = rawWhatsapp.replace(/[^0-9]/g, "");
 
-  const rawPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || "+91 98765 43210";
+  const rawPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || "+91 75055 11251";
   const cleanPhone = rawPhone.replace(/[^0-9+]/g, "");
 
   const prefilledMessage = encodeURIComponent(

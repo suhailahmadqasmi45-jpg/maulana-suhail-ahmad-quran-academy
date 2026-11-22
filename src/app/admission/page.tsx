@@ -41,7 +41,7 @@ function AdmissionFormInner() {
   const selectedCourse =
     APPROVED_COURSES.find((c) => c.slug === formData.courseSlug) || APPROVED_COURSES[0];
 
-  const rawNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+919876543210";
+  const rawNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+917505511251";
   const cleanNumber = rawNumber.replace(/[^0-9]/g, "");
   const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(
     `Assalamu Alaikum, I would like to apply for the ${selectedCourse.title} course at Suhail Online Quran Academy.`

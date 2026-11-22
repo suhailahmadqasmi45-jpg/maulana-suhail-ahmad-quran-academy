@@ -16,9 +16,10 @@ import { IslamicStarPattern } from "./IslamicPattern";
 
 export function Footer() {
   const currentYear = 2026;
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+919876543210";
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+917505511251";
   const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@maulanasuhailquranacademy.com";
-  const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || "+91 98765 43210";
+  const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || "+91 75055 11251";
+  const academyAddress = process.env.NEXT_PUBLIC_ACADEMY_ADDRESS || "Village Nairana, District Muzaffarnagar, Uttar Pradesh - 251203, India";
 
   return (
     <footer className="relative bg-emerald-950 text-ivory-100 pt-16 pb-12 border-t border-gold-500/20 overflow-hidden">
@@ -169,7 +170,12 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-gold-400 shrink-0 mt-0.5" />
-                <span>Online Campus • Distance Learning Platform</span>
+                <div>
+                  <span className="font-semibold text-ivory-100 block">Suhail Online Quran Academy</span>
+                  <span className="text-[11px] text-ivory-200/80 leading-snug block">
+                    {academyAddress}
+                  </span>
+                </div>
               </li>
             </ul>
 

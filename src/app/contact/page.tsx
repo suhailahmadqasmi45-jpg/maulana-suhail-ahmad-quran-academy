@@ -20,9 +20,9 @@ export default function ContactPage() {
     message: "",
   });
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+919876543210";
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+917505511251";
   const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@maulanasuhailquranacademy.com";
-  const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || "+91 98765 43210";
+  const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || "+91 75055 11251";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -127,13 +127,20 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-ivory-50 border border-emerald-950/10 flex items-start gap-4 shadow-sm">
-                <div className="w-10 h-10 rounded-xl bg-emerald-900/10 text-emerald-900 flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5" />
+              <div className="p-5 rounded-2xl bg-ivory-50 border border-emerald-950/15 flex items-start gap-4 shadow-sm">
+                <div className="w-10 h-10 rounded-xl bg-gold-500/20 text-emerald-900 flex items-center justify-center shrink-0 border border-gold-500/40">
+                  <MapPin className="w-5 h-5 text-gold-600" />
                 </div>
-                <div>
-                  <h4 className="font-bold text-sm text-emerald-950">Campus Administration</h4>
-                  <p className="text-xs text-dark-800/80 mt-0.5">
+                <div className="space-y-1">
+                  <h4 className="font-bold text-sm text-emerald-950">Registered Academy Address</h4>
+                  <p className="text-xs font-semibold text-emerald-900">
+                    Maulana Suhail Ahmad • Suhail Online Quran Academy
+                  </p>
+                  <p className="text-xs text-dark-800/85 leading-relaxed">
+                    Village Nairana, District Muzaffarnagar,<br />
+                    Uttar Pradesh - 251203, India
+                  </p>
+                  <p className="text-[11px] text-dark-800/60 pt-0.5">
                     Online Virtual Campus • Operating globally across multiple timezones
                   </p>
                 </div>
@@ -215,7 +222,7 @@ export default function ContactPage() {
                       required
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="e.g. +91 98765 43210"
+                      placeholder="e.g. +91 75055 11251"
                       className="w-full px-3.5 py-2.5 rounded-xl border border-emerald-950/20 bg-white text-xs text-dark-800 focus:outline-none focus:ring-2 focus:ring-gold-500/50"
                     />
                   </div>

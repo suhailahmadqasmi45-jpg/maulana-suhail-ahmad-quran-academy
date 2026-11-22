@@ -12,7 +12,7 @@ interface CourseCardProps {
 }
 
 export function CourseCard({ course, featured = false }: CourseCardProps) {
-  const rawNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+919876543210";
+  const rawNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+917505511251";
   const cleanNumber = rawNumber.replace(/[^0-9]/g, "");
   const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(
     `Assalamu Alaikum, I am interested in enrolling in the ${course.title} course at Suhail Online Quran Academy.`
