@@ -37,7 +37,7 @@ export function Footer() {
               </div>
               <div>
                 <span className="block font-serif text-lg font-bold text-ivory-50 tracking-tight leading-tight">
-                  Maulana Suhail Ahmad
+                  Suhail
                 </span>
                 <span className="block text-xs font-semibold text-gold-400 uppercase tracking-widest">
                   Online Quran Academy
@@ -187,7 +187,7 @@ export function Footer() {
         {/* Legal Policies & Copyright Footer Bar */}
         <div className="pt-8 border-t border-emerald-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ivory-200/60">
           <div className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-2 text-center sm:text-left">
-            <p>© {currentYear} Maulana Suhail Ahmad Online Quran Academy. All Rights Reserved.</p>
+            <p>© {currentYear} Suhail Online Quran Academy. All Rights Reserved.</p>
             <span className="hidden sm:inline text-emerald-800">•</span>
             <p className="text-gold-400/90 font-medium">
               Created by{" "}

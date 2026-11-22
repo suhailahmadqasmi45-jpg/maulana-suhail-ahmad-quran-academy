@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "Admin Dashboard | Maulana Suhail Ahmad Quran Academy",
+  title: "Admin Dashboard | Suhail Online Quran Academy",
 };
 
 export default async function AdminLayout({

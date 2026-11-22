@@ -44,7 +44,7 @@ function AdmissionFormInner() {
   const rawNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+919876543210";
   const cleanNumber = rawNumber.replace(/[^0-9]/g, "");
   const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(
-    `Assalamu Alaikum, I would like to apply for the ${selectedCourse.title} course at Maulana Suhail Ahmad Online Quran Academy.`
+    `Assalamu Alaikum, I would like to apply for the ${selectedCourse.title} course at Suhail Online Quran Academy.`
   )}`;
 
   const handleSubmit = async (e: React.FormEvent) => {

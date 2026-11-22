@@ -7,8 +7,8 @@ export function StructuredData() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
-    "name": "Maulana Suhail Ahmad Online Quran Academy",
-    "alternateName": "Maulana Suhail Quran Academy",
+    "name": "Suhail Online Quran Academy",
+    "alternateName": "Suhail Online Quran Academy",
     "url": baseUrl,
     "logo": `${baseUrl}/logo.png`,
     "description": "Premier international online Quran academy offering structured courses in Noorani Qaida, Quran Kareem Nazra, Hifz-e-Quran, and Aalim Course.",
@@ -31,7 +31,7 @@ export function StructuredData() {
         "description": c.description,
         "provider": {
           "@type": "EducationalOrganization",
-          "name": "Maulana Suhail Ahmad Online Quran Academy",
+          "name": "Suhail Online Quran Academy",
           "sameAs": baseUrl,
         },
         "offers": {
@@ -55,7 +55,7 @@ export function StructuredData() {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What courses are offered at Maulana Suhail Ahmad Online Quran Academy?",
+        "name": "What courses are offered at Suhail Online Quran Academy?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "The academy exclusively offers four premier courses: Noorani Qaida (₹1,399/month), Quran Kareem Nazra (₹1,399/month), Hifz-e-Quran (₹1,899/month), and Aalim Course (₹1,399/month).",

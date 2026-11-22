@@ -119,7 +119,7 @@ export const APPROVED_COURSES: CourseData[] = [
     titleUrdu: "عالم کورس",
     titleArabic: "البرنامج العالِمي في الدراسات الإسلامية",
     description: "Explore structured Islamic studies and develop a deeper understanding of foundational Islamic subjects.",
-    fullDescription: "The Aalim Course at Maulana Suhail Ahmad Online Quran Academy offers a structured, authentic curriculum in foundational Islamic scholarship designed for serious students of knowledge, working professionals, and university students seeking a scholarly grounding in their faith. Covering Classical Arabic, Quranic Tafseer, Hadith principles, Islamic Jurisprudence (Fiqh), Seerah, and Islamic Ethics, this course cultivates balanced understanding under qualified traditional scholars. (Note: The final syllabus, course duration, qualifications, and certification details must be confirmed by academy administration).",
+    fullDescription: "The Aalim Course at Suhail Online Quran Academy offers a structured, authentic curriculum in foundational Islamic scholarship designed for serious students of knowledge, working professionals, and university students seeking a scholarly grounding in their faith. Covering Classical Arabic, Quranic Tafseer, Hadith principles, Islamic Jurisprudence (Fiqh), Seerah, and Islamic Ethics, this course cultivates balanced understanding under qualified traditional scholars. (Note: The final syllabus, course duration, qualifications, and certification details must be confirmed by academy administration).",
     monthlyFee: 1399,
     originalFee: 1499,
     duration: "Multi-year structured levels (Flexible modular semesters)",

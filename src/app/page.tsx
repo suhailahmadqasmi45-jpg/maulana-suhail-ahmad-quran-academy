@@ -56,7 +56,7 @@ export default function HomePage() {
               {/* Main Headline */}
               <div className="space-y-2">
                 <h2 className="text-sm md:text-base font-semibold tracking-wider text-gold-400 uppercase">
-                  Maulana Suhail Ahmad Online Quran Academy
+                  Suhail Online Quran Academy
                 </h2>
                 <h1 className="font-serif text-2xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ivory-50 leading-[1.2] sm:leading-[1.15]">
                   Learn Quran from Home, <br className="hidden sm:inline" />
@@ -716,7 +716,7 @@ export default function HomePage() {
                 country: "United Kingdom",
                 course: "Noorani Qaida & Nazra",
                 quote:
-                  "Maulana Suhail Ahmad Online Quran Academy has transformed my children’s connection with the Quran. The teachers are exceptionally patient, punctual, and follow a structured methodology. Seeing my 8-year-old recite with accurate Makharij brings tears of gratitude.",
+                  "Suhail Online Quran Academy has transformed my children’s connection with the Quran. The teachers are exceptionally patient, punctual, and follow a structured methodology. Seeing my 8-year-old recite with accurate Makharij brings tears of gratitude.",
               },
               {
                 name: "Sister Fatima Al-Zahra",
@@ -947,7 +947,7 @@ export default function HomePage() {
           </h2>
 
           <p className="text-sm sm:text-base text-ivory-200/90 leading-relaxed font-sans max-w-xl mx-auto">
-            Join hundreds of satisfied students worldwide. Take the first step with certified scholars at Maulana Suhail Ahmad Online Quran Academy.
+            Join hundreds of satisfied students worldwide. Take the first step with certified scholars at Suhail Online Quran Academy.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">

@@ -21,15 +21,15 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: "Maulana Suhail Ahmad Online Quran Academy | Learn Quran from Home",
-    template: "%s | Maulana Suhail Ahmad Online Quran Academy",
+    default: "Suhail Online Quran Academy | Learn Quran from Home",
+    template: "%s | Suhail Online Quran Academy",
   },
   description:
     "Learn Quran from Home, From Anywhere in the World. Structured online Quran courses: Noorani Qaida (₹1,399/mo), Quran Kareem Nazra (₹1,399/mo), Hifz-e-Quran (₹1,899/mo), and Aalim Course (₹1,399/mo). 1-on-1 personalized lessons with certified teachers.",
   keywords: [
     "Online Quran Academy",
     "Learn Quran Online",
-    "Maulana Suhail Ahmad Online Quran Academy",
+    "Suhail Online Quran Academy",
     "Noorani Qaida Online Classes",
     "Quran Kareem Nazra Course",
     "Online Hifz Quran Classes",
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     "Quran Classes for Adults",
     "Tajweed classes online",
   ],
-  authors: [{ name: "Maulana Suhail Ahmad Online Quran Academy" }],
-  creator: "Maulana Suhail Ahmad Online Quran Academy",
-  publisher: "Maulana Suhail Ahmad Online Quran Academy",
+  authors: [{ name: "Suhail Online Quran Academy" }],
+  creator: "Suhail Online Quran Academy",
+  publisher: "Suhail Online Quran Academy",
   formatDetection: {
     email: false,
     address: false,
@@ -51,16 +51,16 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://maulanasuhailquranacademy.com"),
   openGraph: {
-    title: "Maulana Suhail Ahmad Online Quran Academy",
+    title: "Suhail Online Quran Academy",
     description: "Learn Quran from Home, From Anywhere in the World. 1-on-1 structured Quran education.",
     url: "/",
-    siteName: "Maulana Suhail Ahmad Online Quran Academy",
+    siteName: "Suhail Online Quran Academy",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Maulana Suhail Ahmad Online Quran Academy",
+    title: "Suhail Online Quran Academy",
     description: "Learn Quran from Home, From Anywhere in the World.",
   },
   robots: {

@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/PageHeader";
 
 export const metadata = {
   title: "Refund Policy",
-  description: "Fee payment and refund policy of Maulana Suhail Ahmad Online Quran Academy.",
+  description: "Fee payment and refund policy of Suhail Online Quran Academy.",
 };
 
 export default function RefundPolicyPage() {

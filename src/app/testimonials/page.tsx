@@ -7,7 +7,7 @@ import { QuranVerseBanner } from "@/components/IslamicPattern";
 export const metadata = {
   title: "Student & Parent Reviews",
   description:
-    "Read genuine reviews and testimonials from parents, adult learners, and students studying at Maulana Suhail Ahmad Online Quran Academy.",
+    "Read genuine reviews and testimonials from parents, adult learners, and students studying at Suhail Online Quran Academy.",
 };
 
 export default function TestimonialsPage() {
@@ -19,7 +19,7 @@ export default function TestimonialsPage() {
       course: "Noorani Qaida & Nazra",
       rating: 5,
       comment:
-        "Maulana Suhail Ahmad Online Quran Academy has transformed my children’s connection with the Quran. The teachers are exceptionally patient, punctual, and follow a structured methodology. Seeing my 8-year-old recite with accurate Makharij brings tears of gratitude.",
+        "Suhail Online Quran Academy has transformed my children’s connection with the Quran. The teachers are exceptionally patient, punctual, and follow a structured methodology. Seeing my 8-year-old recite with accurate Makharij brings tears of gratitude.",
     },
     {
       name: "Sister Fatima Al-Zahra",

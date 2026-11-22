@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/PageHeader";
 
 export const metadata = {
   title: "Privacy Policy",
-  description: "Privacy policy and student data security terms of Maulana Suhail Ahmad Online Quran Academy.",
+  description: "Privacy policy and student data security terms of Suhail Online Quran Academy.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -21,7 +21,7 @@ export default function PrivacyPolicyPage() {
           <section className="space-y-2">
             <h2 className="font-serif text-xl font-bold text-emerald-950">1. Information We Collect</h2>
             <p>
-              When you enroll or book a free trial at Maulana Suhail Ahmad Online Quran Academy, we collect personal information strictly required to deliver our educational services, including student full name, parent or guardian name, age, email address, phone/WhatsApp number, country, and class schedule preferences.
+              When you enroll or book a free trial at Suhail Online Quran Academy, we collect personal information strictly required to deliver our educational services, including student full name, parent or guardian name, age, email address, phone/WhatsApp number, country, and class schedule preferences.
             </p>
           </section>
 

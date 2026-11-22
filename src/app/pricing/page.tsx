@@ -17,7 +17,7 @@ import { SubtleGeometricPattern, QuranVerseBanner } from "@/components/IslamicPa
 export const metadata = {
   title: "Course Fees & Tuition Pricing",
   description:
-    "Transparent monthly course fees at Maulana Suhail Ahmad Online Quran Academy: Noorani Qaida (₹1,399/mo), Quran Kareem Nazra (₹1,399/mo), Hifz-e-Quran (₹1,899/mo), and Aalim Course (₹1,399/mo).",
+    "Transparent monthly course fees at Suhail Online Quran Academy: Noorani Qaida (₹1,399/mo), Quran Kareem Nazra (₹1,399/mo), Hifz-e-Quran (₹1,899/mo), and Aalim Course (₹1,399/mo).",
 };
 
 export default function PricingPage() {

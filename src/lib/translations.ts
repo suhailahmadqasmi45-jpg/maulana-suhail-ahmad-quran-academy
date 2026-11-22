@@ -50,7 +50,7 @@ export interface TranslationStrings {
 
 export const translations: Record<LanguageCode, TranslationStrings> = {
   en: {
-    academyName: "Maulana Suhail Ahmad Online Quran Academy",
+    academyName: "Suhail Online Quran Academy",
     tagline: "Learn Quran from Home, From Anywhere in the World",
     nav: {
       home: "Home",
@@ -72,7 +72,7 @@ export const translations: Record<LanguageCode, TranslationStrings> = {
     hero: {
       badge: "Trusted Global Islamic Education",
       headline: "Learn Quran from Home, From Anywhere in the World",
-      subheadline: "Maulana Suhail Ahmad Online Quran Academy",
+      subheadline: "Suhail Online Quran Academy",
       description:
         "Begin your journey of Quran learning with structured online courses designed for children, beginners, and adults. Learn Quran reading, memorization, and Islamic knowledge from the comfort of your home.",
       exploreCourses: "Explore Our Courses",

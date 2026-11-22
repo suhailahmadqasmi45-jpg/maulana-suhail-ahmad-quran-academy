@@ -21,7 +21,7 @@ export default function TermsAndConditionsPage() {
           <section className="space-y-2">
             <h2 className="font-serif text-xl font-bold text-emerald-950">1. Acceptance of Terms</h2>
             <p>
-              By registering, booking a trial class, or submitting an admission form with Maulana Suhail Ahmad Online Quran Academy, you agree to comply with and be bound by these Terms and Conditions.
+              By registering, booking a trial class, or submitting an admission form with Suhail Online Quran Academy, you agree to comply with and be bound by these Terms and Conditions.
             </p>
           </section>
 

@@ -82,7 +82,7 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   const post = blogDatabase[params.slug];
   if (!post) return { title: "Article Not Found" };
   return {
-    title: `${post.title} | Maulana Suhail Ahmad Quran Academy`,
+    title: `${post.title} | Suhail Online Quran Academy`,
     description: post.content[0],
   };
 }
@@ -160,7 +160,7 @@ export default function BlogPostDetailPage({ params }: { params: { slug: string 
             Ready to Begin Learning with Certified Scholars?
           </h3>
           <p className="text-xs sm:text-sm text-ivory-200/80 max-w-md mx-auto">
-            Book a complimentary 1-on-1 trial class at Maulana Suhail Ahmad Online Quran Academy today.
+            Book a complimentary 1-on-1 trial class at Suhail Online Quran Academy today.
           </p>
           <div className="pt-2">
             <Link

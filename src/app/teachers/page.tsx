@@ -7,7 +7,7 @@ import { QuranVerseBanner } from "@/components/IslamicPattern";
 export const metadata = {
   title: "Our Teachers & Scholarly Faculty",
   description:
-    "Meet the qualified, certified Islamic scholars, Huffaz, and Qaris who guide our students at Maulana Suhail Ahmad Online Quran Academy.",
+    "Meet the qualified, certified Islamic scholars, Huffaz, and Qaris who guide our students at Suhail Online Quran Academy.",
 };
 
 export default function TeachersPage() {

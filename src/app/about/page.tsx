@@ -18,7 +18,7 @@ import { SubtleGeometricPattern, QuranVerseBanner } from "@/components/IslamicPa
 export const metadata = {
   title: "About Us",
   description:
-    "Learn about Maulana Suhail Ahmad Online Quran Academy, our history, pedagogical principles, scholarly supervision, and mission to deliver authentic Quran education globally.",
+    "Learn about Suhail Online Quran Academy, our history, pedagogical principles, scholarly supervision, and mission to deliver authentic Quran education globally.",
 };
 
 export default function AboutPage() {
@@ -50,7 +50,7 @@ export default function AboutPage() {
               A Global Sanctuary for Quranic Literacy & Spiritual Growth
             </h2>
             <p className="text-dark-800/80 text-sm sm:text-base leading-relaxed">
-              Maulana Suhail Ahmad Online Quran Academy was founded to bridge the growing gap between traditional Islamic madrasa excellence and modern digital convenience. In a fast-paced world, parents often struggle to find qualified, patient, and reliable Quran teachers within their immediate locality.
+              Suhail Online Quran Academy was founded to bridge the growing gap between traditional Islamic madrasa excellence and modern digital convenience. In a fast-paced world, parents often struggle to find qualified, patient, and reliable Quran teachers within their immediate locality.
             </p>
             <p className="text-dark-800/80 text-sm sm:text-base leading-relaxed">
               Under the direct guidance of Maulana Suhail Ahmad, our academy brings centuries of tested classical pedagogical principles—such as the Noorani Qaida phonetics, Tajweed articulation rules, and the rigorous Sabaq-Sabqi-Manzil memorization methodology—directly into homes across India, the GCC, the United Kingdom, North America, and Australia.

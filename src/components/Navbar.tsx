@@ -37,7 +37,7 @@ export function Navbar() {
   const rawWhatsapp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+919876543210";
   const cleanWhatsapp = rawWhatsapp.replace(/[^0-9]/g, "");
   const whatsappUrl = `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(
-    "Assalamu Alaikum, I would like to inquire about Quran classes at Maulana Suhail Ahmad Online Quran Academy."
+    "Assalamu Alaikum, I would like to inquire about Quran classes at Suhail Online Quran Academy."
   )}`;
 
   const rawPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || "+91 98765 43210";
@@ -74,7 +74,7 @@ export function Navbar() {
 
             <div className="min-w-0">
               <span className="block font-serif text-sm sm:text-lg font-bold text-ivory-50 tracking-tight leading-tight group-hover:text-gold-300 transition-colors truncate">
-                Maulana Suhail Ahmad
+                Suhail
               </span>
               <span className="block text-[9px] sm:text-[11px] font-medium text-gold-400 uppercase tracking-widest truncate">
                 Online Quran Academy

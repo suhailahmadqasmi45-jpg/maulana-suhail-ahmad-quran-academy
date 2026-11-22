@@ -16,7 +16,7 @@ export function WhatsAppFloating({
   const cleanPhone = rawPhone.replace(/[^0-9+]/g, "");
 
   const prefilledMessage = encodeURIComponent(
-    `Assalamu Alaikum, I would like to inquire about Quran classes at Maulana Suhail Ahmad Online Quran Academy.`
+    `Assalamu Alaikum, I would like to inquire about Quran classes at Suhail Online Quran Academy.`
   );
 
   const whatsappUrl = `https://wa.me/${cleanWhatsapp}?text=${prefilledMessage}`;
@@ -30,7 +30,7 @@ export function WhatsAppFloating({
       <a
         href={`tel:${cleanPhone}`}
         className="group relative flex items-center gap-2 p-2.5 sm:px-3.5 sm:py-2.5 bg-emerald-950 hover:bg-emerald-900 text-ivory-50 rounded-full shadow-[0_4px_16px_rgba(6,78,59,0.45)] border-2 border-gold-400/60 hover:scale-105 active:scale-95 transition-all duration-300 backdrop-blur-md"
-        aria-label="Call Maulana Suhail Ahmad Online Quran Academy"
+        aria-label="Call Suhail Online Quran Academy"
         title="Direct Phone Call"
       >
         <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-gold-500/20 text-gold-300 flex items-center justify-center shrink-0 border border-gold-400/40 group-hover:bg-gold-500 group-hover:text-emerald-950 transition-colors">
