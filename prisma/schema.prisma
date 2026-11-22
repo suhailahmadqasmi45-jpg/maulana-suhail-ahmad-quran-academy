@@ -1,0 +1,210 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(uuid())
+  name         String
+  email        String    @unique
+  passwordHash String
+  role         String    @default("STUDENT") // STUDENT or ADMIN
+  phone        String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  students     Student[]
+}
+
+model Student {
+  id                String           @id @default(uuid())
+  userId            String           @unique
+  user              User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parentName        String?
+  age               Int?
+  country           String           @default("India")
+  city              String?
+  preferredLanguage String           @default("English")
+  preferredTiming   String?
+  status            String           @default("ACTIVE")
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  enrollments       Enrollment[]
+  progressRecords   ProgressRecord[]
+}
+
+model Course {
+  id              String       @id @default(uuid())
+  slug            String       @unique
+  title           String
+  titleUrdu       String?
+  titleArabic     String?
+  description     String
+  fullDescription String
+  monthlyFee      Int // Centralized approved pricing in INR
+  originalFee     Int? // Centralized reference price
+  duration        String       @default("Flexible (self-paced)")
+  level           String       @default("Beginner to Advanced")
+  image           String
+  curriculum      String // JSON string array of topics
+  highlights      String // JSON string array of features
+  order           Int          @default(1)
+  isFeatured      Boolean      @default(true)
+  isActive        Boolean      @default(true)
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  enrollments     Enrollment[]
+}
+
+model Admission {
+  id                 String   @id @default(uuid())
+  applicationRef     String   @unique
+  studentName        String
+  parentName         String?
+  age                Int?
+  email              String?
+  mobile             String
+  whatsapp           String?
+  country            String?  @default("India")
+  city               String?
+  courseSlug         String
+  courseName         String
+  preferredTiming    String?
+  preferredLanguage  String?  @default("English")
+  experience         String?
+  comments           String?
+  status             String   @default("PENDING") // PENDING, APPROVED, ENROLLED, REJECTED
+  adminNotes         String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model TrialBooking {
+  id                 String   @id @default(uuid())
+  reference          String   @unique
+  name               String
+  email              String
+  phone              String
+  courseSlug         String
+  courseName         String
+  country            String
+  preferredDate      String
+  preferredTime      String
+  preferredLanguage  String
+  notes              String?
+  status             String   @default("PENDING") // PENDING, APPROVED, RESCHEDULED, REJECTED, COMPLETED
+  adminNotes         String?
+  meetingLink        String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model Enrollment {
+  id          String          @id @default(uuid())
+  studentId   String
+  student     Student         @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  courseId    String
+  course      Course          @relation(fields: [courseId], references: [id])
+  status      String          @default("ACTIVE") // ACTIVE, PAUSED, COMPLETED
+  startDate   DateTime        @default(now())
+  nextDueDate DateTime?
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  schedules   ClassSchedule[]
+}
+
+model ClassSchedule {
+  id           String      @id @default(uuid())
+  enrollmentId String?
+  enrollment   Enrollment? @relation(fields: [enrollmentId], references: [id], onDelete: SetNull)
+  studentName  String
+  courseName   String
+  teacherName  String
+  dayOfWeek    String // Monday, Tuesday, etc.
+  startTime    String // e.g. "18:00"
+  endTime      String // e.g. "18:45"
+  meetingLink  String?
+  status       String      @default("SCHEDULED")
+  createdAt    DateTime    @default(now())
+}
+
+model ProgressRecord {
+  id                String   @id @default(uuid())
+  studentId         String
+  student           Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  courseName        String
+  surahOrLesson     String
+  ayaStart          Int?
+  ayaEnd            Int?
+  tajweedScore      Int? // 1-100
+  memorizationScore Int? // 1-100
+  teacherNotes      String?
+  date              DateTime @default(now())
+  createdAt         DateTime @default(now())
+}
+
+model PaymentRecord {
+  id            String   @id @default(uuid())
+  transactionId String   @unique
+  studentName   String
+  studentEmail  String
+  courseName    String
+  amount        Int // in INR
+  currency      String   @default("INR")
+  status        String   @default("PAID") // PAID, PENDING, FAILED, REFUNDED
+  method        String   @default("Bank Transfer / UPI")
+  paymentDate   DateTime @default(now())
+  receiptUrl    String?
+  createdAt     DateTime @default(now())
+}
+
+model ContactInquiry {
+  id             String   @id @default(uuid())
+  name           String
+  email          String
+  phone          String
+  subject        String
+  courseInterest String?
+  message        String
+  status         String   @default("NEW") // NEW, IN_PROGRESS, RESOLVED
+  adminNotes     String?
+  createdAt      DateTime @default(now())
+}
+
+model BlogPost {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  title       String
+  excerpt     String
+  content     String
+  category    String
+  author      String   @default("Academy Academic Council")
+  image       String
+  readTime    String   @default("5 min read")
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Testimonial {
+  id         String   @id @default(uuid())
+  name       String
+  relation   String // Parent / Student / Adult Learner
+  country    String
+  rating     Int      @default(5)
+  courseName String
+  comment    String
+  isApproved Boolean  @default(true)
+  createdAt  DateTime @default(now())
+}
+
+model Setting {
+  id          String   @id @default(uuid())
+  key         String   @unique
+  value       String
+  description String?
+  updatedAt   DateTime @updatedAt
+}
